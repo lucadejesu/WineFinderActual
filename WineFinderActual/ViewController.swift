@@ -8,10 +8,26 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UICollectionViewController
+{
 
+    
+    @IBOutlet weak var findButton: UIButton!
+    @IBOutlet weak var findWineCell: UICollectionViewCell!
+    
+    @IBAction func findButtonPressed(_ sender: Any)
+    {
+        findWineCell.contentView.backgroundColor = .systemGray4
+        
+    }
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.dataSource = self
         // Do any additional setup after loading the view.
     }
 
