@@ -16,11 +16,117 @@ import CoreData
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
 
 
+// Helper function to check if the user selected a range of price
+func checkForRange(attributes: [String]) -> ClosedRange<Int>
+{
+    // Ranges for price
+    let zeroToTen = 0...10
+    let tenToTwenty = 10...20
+    let twentyToThirtyFive = 20...35
+    let thirtyFivePlus = 35...10000
+    
+    for attribute in attributes
+    {
+        if attribute == "1-10 dollars"
+        {
+            return zeroToTen
+        }
+        else if attribute == "10-20 dollars"
+        {
+            return tenToTwenty
+        }
+        else if attribute == "20-35 dollars"
+        {
+            return twentyToThirtyFive
+        }
+        else if attribute == ">=35 dollars"
+        {
+            return thirtyFivePlus
+        }
+    
+    }
+    
+    return 0...1
+    
+}
+
 func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
 {
     // Only matches go here, along with their newly added "matchPoints"
     var foundWines: [WineReview] = []
     
+    // Attributes is what was passed in from the user, in the above
+    let range = checkForRange(attributes: attributes)
+    
+    var color = "Nothing"
+    
+    for attribute in attributes
+    {
+        if attribute == "red"
+        {
+            color = "red"
+        }
+        else if attribute == "white"
+        {
+            color = "white"
+        }
+        else if attribute == "sparkling/other"
+        {
+            color = "sparkling/other"
+        }
+    }
+    
+    var matchScore = 0
+    
+    for wine in wines
+    {
+        var currentWine = wine
+        // Check if the price range fits
+        if range != 0...1
+        {
+            // If price is not in the price range, skip the wine
+            if !range.contains(wine.price ?? -1)
+            {
+                continue
+            }
+            else
+            {
+                matchScore = matchScore+1
+            }
+            
+        }
+        // If they specified a color, and it doesnt match, then break
+        if color != "Nothing"
+        {
+            if wine.color != color
+            {
+                continue
+            }
+            else
+            {
+                matchScore = matchScore+1
+            }
+        }
+        
+        // Loop through all the wine description words
+        for descriptor in wine.description ?? []
+        {
+            // Loop through all the attributes
+            for attribute in attributes
+            {
+                // If the descriptor matches the attribute, add a point, break the inner loop
+                if descriptor == attribute
+                {
+                    matchScore = matchScore+1
+                    break
+                }
+            }
+        }
+        
+        currentWine.matchPoints = matchScore
+        foundWines.append(currentWine)
+        
+    }
     
     
     return foundWines
@@ -43,6 +149,8 @@ class FirstWineTableViewController: UITableViewController
         
         foundWines = matchWines(attributes: chosenAttributes, wines: data)
         
+        print(foundWines[0].title ?? "null")
+        print(foundWines[0].matchPoints)
         //print(data)
         
         

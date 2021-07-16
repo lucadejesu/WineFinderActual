@@ -16,7 +16,7 @@ struct WineReview: Codable
     // types: ALL are Strings, except price, which is an int
     private enum CodingKeys : String, CodingKey
     {
-        case variety, points, winery, description, country, price, color
+        case variety, points, winery, description, country, price, color, title
     }
     var variety: String?
     var points: String?
