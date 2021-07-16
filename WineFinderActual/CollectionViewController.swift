@@ -112,9 +112,9 @@ class CollectionViewController: UICollectionViewController
             cell = descriptorCell
         }
         
-        
+        // change structural stuff here
         cell.layer.cornerRadius = 10
-        
+        // cell.layer.backgroundColor = 
         
         // NOTE: The reason that the labels were not showing was because the constraints on the label were not
         // centered to the content view correctly (bottom right corner)
