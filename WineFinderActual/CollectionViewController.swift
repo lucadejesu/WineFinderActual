@@ -112,6 +112,7 @@ class CollectionViewController: UICollectionViewController
             cell = descriptorCell
         }
         
+        
         cell.layer.cornerRadius = 10
         
         
