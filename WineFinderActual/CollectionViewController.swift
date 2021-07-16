@@ -18,7 +18,7 @@ class CollectionViewController: UICollectionViewController
     // List of top wine descriptors used in reviews
     // From the top 60 words in the reviews, in order of flavor, texture, body
     let dataSource: [String] = ["fruit", "cherry", "berry", "spice", "oak", "citrus", "plum", "pepper", "vanilla", "lemon", "soft", "sweet", "dry", "juicy", "light", "full", "blend", "red",
-    "white", "other", "1- 10 dollars", "10-20 dollars","20-35 dollars", ">= 35 dollars"]
+    "white", "sparkling/other", "1- 10 dollars", "10-20 dollars","20-35 dollars", ">= 35 dollars"]
     
     // This will be an array of actual chosen descriptors clicked on:
     var chosen: [String] = []
@@ -33,14 +33,17 @@ class CollectionViewController: UICollectionViewController
     @IBAction func findButtonTapped(_ sender: UIButton) -> Void
     {
         
-        sender.backgroundColor = UIColor(red: 0.33, green: 0.00, blue: 0.00, alpha: 1.00)
+        
         // Collect all of the selected words at this point, to be passed to the next view.
         var count = 0
+        // Used to check if anything was selected
+        var pickedCount = 0
         for descriptor in dataSource
         {
             if selected[count] == true
             {
                 chosen.append(descriptor)
+                pickedCount = pickedCount + 1
             }
             count = count + 1
         }
@@ -51,14 +54,29 @@ class CollectionViewController: UICollectionViewController
         
         // Use guard to check if we can instantiate, if we can't, then return
         // nextPage is a child view controller, and this is a modal transition
+        
+        
+        // If the user picked attributes, continue
+        if pickedCount != 0
+        {
+        sender.backgroundColor = UIColor(red: 0.33, green: 0.00, blue: 0.00, alpha: 1.00)
+            
         guard let nextPage = storyboard?.instantiateViewController(identifier: "firstWineTable") as? FirstWineTableViewController else { return }
         
         nextPage.chosenAttributes = chosen
         
         navigationController?.pushViewController(nextPage, animated: true)
+        }
         
-        // Chosen is the attributes selected, an array of strings
-        // 
+        // If nothing is selected, display a UIAlert asking for descriptors to be selected
+        else
+        {
+            let alert = UIAlertController(title: "Did you select any descriptors?", message: "In order to recommend some wines, you need to select some descriptors.", preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+
+            self.present(alert, animated: true)
+        }
         
         
         
@@ -95,6 +113,7 @@ class CollectionViewController: UICollectionViewController
         }
         
         cell.layer.cornerRadius = 10
+        
         
         // NOTE: The reason that the labels were not showing was because the constraints on the label were not
         // centered to the content view correctly (bottom right corner)

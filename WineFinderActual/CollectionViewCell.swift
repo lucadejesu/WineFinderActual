@@ -27,6 +27,7 @@ class CollectionViewCell: UICollectionViewCell
     func configure(with descriptor: String)
     {
         descriptorLabel.text = descriptor
+        descriptorLabel.adjustsFontSizeToFitWidth = true
     }
     
     

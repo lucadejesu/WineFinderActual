@@ -10,22 +10,25 @@ import UIKit
 import CoreData
 
 // Modularize the logic of the program by using a protocol, and then extending the methods we want to create:
-protocol WineLogicMethods {}
 
-extension WineLogicMethods
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
+// When back button is pressed on the navigation bar, reset all selected attributes //
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
+
+
+func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
 {
-    func matchWines(attributes: [String], wines: [WineReview]) -> [String]
-    {
-        print("5")
-        return ["chiggen"]
-    }
+    // Only matches go here, along with their newly added "matchPoints"
+    var foundWines: [WineReview] = []
     
     
     
+    return foundWines
 }
+    
 
 
-class FirstWineTableViewController: UITableViewController, WineLogicMethods
+class FirstWineTableViewController: UITableViewController
 {
     var chosenAttributes: [String] = []
     let data = DataLoader().wineReviews
@@ -34,8 +37,11 @@ class FirstWineTableViewController: UITableViewController, WineLogicMethods
     {
         
         super.viewDidLoad()
-        //
+        // Need a recommendation algorithm, based on similarity of selected atttributes and color and price
         
+        var foundWines: [WineReview] = []
+        
+        foundWines = matchWines(attributes: chosenAttributes, wines: data)
         
         //print(data)
         
