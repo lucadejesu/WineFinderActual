@@ -16,6 +16,88 @@ import CoreData
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
 
 
+// Helper function for heap sort:
+
+func heapify(wines: [WineReview], size: Int, index: Int) -> [WineReview]
+{
+    var sortedWines = wines
+    var smallest = index
+    
+    // The left child is 2i + 1 (balanced binary tree)
+    let left = 2*index + 1
+    // Right child is 2i +2 (balanced binary tree)
+    let right = 2*index + 2
+    
+    // If the left child is smaller than the root, make the left child the root (building a min heap)
+    if (left < size && sortedWines[left].matchPoints < sortedWines[smallest].matchPoints)
+    {
+        smallest = left
+    }
+    
+    // If the right child is smaller than current smallest:
+    if(right < size && sortedWines[right].matchPoints < sortedWines[smallest].matchPoints)
+    {
+        smallest = right
+    }
+    
+    // If smallest is not the root:
+    if(smallest != index)
+    {
+        // Swap the smallest to 'index' the root
+        sortedWines.swapAt(index, smallest)
+        
+        // Make a recurive call to heapify the affected subtree
+        sortedWines = heapify(wines: sortedWines, size: size, index: smallest)
+    }
+    
+    return sortedWines
+}
+
+
+// Sort in descending order, based on the match points
+func heapSort(wines: [WineReview]) -> [WineReview]
+{
+    var sortedWines = wines
+    // Get the number of items in the array of found WineReviews:
+    let size = wines.count
+    // Step 1: Build a min heap from the input data
+    // Step 2: Replace the root (the smallest item) with the last item of the heap
+    // Step 3: Reduce heap size by 1
+    // Step 4: heapify the root of the tree (make it conform to heap rules)
+    // Step 5: Repeat the loop while the size of the heap is greater than 1.
+    
+    
+    var index = size/2 - 1
+    
+    while(index >= 0)
+    {
+        
+        sortedWines = heapify(wines: wines, size: size, index: index)
+        
+        index = index-1
+    }
+
+    // Extract elements from the newly created minHeap, sortedWines:
+    var newIndex = size - 1
+    
+    while(newIndex >= 0)
+    {
+        // Move the current root, the smallest, to the end, to sort in descending order:
+        sortedWines.swapAt(0, newIndex)
+        
+        // Heapify the reduced heap:
+        sortedWines = heapify(wines: sortedWines, size: newIndex, index: 0)
+        
+        newIndex = newIndex - 1
+    }
+    
+    return sortedWines
+}
+
+
+
+
+
 // Helper function to check if the user selected a range of price
 func checkForRange(attributes: [String]) -> ClosedRange<Int>
 {
@@ -27,7 +109,7 @@ func checkForRange(attributes: [String]) -> ClosedRange<Int>
     
     for attribute in attributes
     {
-        if attribute == "1-10 dollars"
+        if attribute == "1- 10 dollars"
         {
             return zeroToTen
         }
@@ -76,10 +158,11 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
         }
     }
     
-    var matchScore = 0
+    
     
     for wine in wines
     {
+        var matchScore = 0
         var currentWine = wine
         // Check if the price range fits
         if range != 0...1
@@ -138,6 +221,7 @@ class FirstWineTableViewController: UITableViewController
 {
     var chosenAttributes: [String] = []
     let data = DataLoader().wineReviews
+    var foundWines: [WineReview] = []
     
     override func viewDidLoad()
     {
@@ -145,12 +229,27 @@ class FirstWineTableViewController: UITableViewController
         super.viewDidLoad()
         // Need a recommendation algorithm, based on similarity of selected atttributes and color and price
         
-        var foundWines: [WineReview] = []
+        
         
         foundWines = matchWines(attributes: chosenAttributes, wines: data)
         
+        
+        // Need to sort the wines by:
+        // [Highest score ---> Lowest score]
+        // Use our heap sort implementation:
+        foundWines = heapSort(wines: foundWines)
+        
+        
+        
         print(foundWines[0].title ?? "null")
+        print(foundWines[0].description ?? "null")
         print(foundWines[0].matchPoints)
+        
+        print(foundWines.count, " found")
+        
+        print(foundWines[300].title ?? "null")
+        print(foundWines[300].description ?? "null")
+        print(foundWines[300].matchPoints)
         //print(data)
         
         
@@ -173,7 +272,7 @@ class FirstWineTableViewController: UITableViewController
     {
         
         // Number of rows can be the max number of wines to be presented ************
-        return chosenAttributes.count
+        return 10
     }
 
     
@@ -190,10 +289,10 @@ class FirstWineTableViewController: UITableViewController
         // example of calling a logic method from the protocol
         // matchWines(attributes: chosenAttributes, wines: data)
         
-        print(data[1].description)
+        
         
         // Configure the cell...
-        cell.textLabel?.text = chosenAttributes[indexPath.row]
+        cell.textLabel?.text = foundWines[indexPath.row].title
         print(indexPath.row)
         return cell
     }

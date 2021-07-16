@@ -47,7 +47,7 @@ class CollectionViewController: UICollectionViewController
             }
             count = count + 1
         }
-        print(chosen)
+        
         
         // Now, we need to take the chosen words, and compare against some wine data,
         // and then present these wines in a new view
@@ -65,6 +65,7 @@ class CollectionViewController: UICollectionViewController
         
         nextPage.chosenAttributes = chosen
         
+        print(chosen)
         navigationController?.pushViewController(nextPage, animated: true)
         }
         
@@ -169,7 +170,7 @@ class CollectionViewController: UICollectionViewController
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         // IndexPath row is numbered 0-26 (or 0-(# of attributes - 1))
-        print("Selected attribute:  \(dataSource[indexPath.row])")
+        
         
         if let cell = collectionView.cellForItem(at:indexPath) as? CollectionViewCell
         {
