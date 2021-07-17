@@ -57,15 +57,30 @@ func heapify(wines: [WineReview], size: Int, index: Int) -> [WineReview]
 // Sort in descending order, based on the match points
 func heapSort(wines: [WineReview]) -> [WineReview]
 {
+    // Parameters in swift are immutable, so we need to copy it for a mutable copy:
     var sortedWines = wines
     // Get the number of items in the array of found WineReviews:
     let size = wines.count
     // Step 1: Build a min heap from the input data
+    
+    // Why build a min heap?
+    // We want to sort in descending order, with the wine that has the HIGHEST match score at the front, to be displayed
+    // at the top. This is can be achieved by building a min heap, then swapping the root (the smallest score) with the last item
+    // (the highest score), pushing the top rated item to the front of the array.
+    // In order to maintain the heap, we need to heapify after each swap and continue the process.
+    // Heapify (in the min heap case) bubbles up the smaller child, if the child is smaller than the parent.
+    
     // Step 2: Replace the root (the smallest item) with the last item of the heap
     // Step 3: Reduce heap size by 1
     // Step 4: heapify the root of the tree (make it conform to heap rules)
     // Step 5: Repeat the loop while the size of the heap is greater than 1.
     
+    // Why heap sort?
+    // The overall complexity of heap sort is O(n * log (n)), where n is the number of matching wines found.
+    // This is because building the heap runs in O(n) time, and heapify runs in O(log (n)) time (because of the heap
+    // height) and we call heapify n-1 times. So, n*log(n) makes the whole algorithm O(n* log(n)). This is decently quick
+    // sorting algorithm, making for efficient use of time for now and for future expansion of the app (more wines added, more
+    // scoring feature, etc)
     
     var index = size/2 - 1
     
@@ -109,6 +124,7 @@ func checkForRange(attributes: [String]) -> ClosedRange<Int>
     
     for attribute in attributes
     {
+        // Note the space in the string
         if attribute == "1- 10 dollars"
         {
             return zeroToTen
@@ -152,10 +168,7 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
         {
             color = "white"
         }
-        else if attribute == "sparkling/other"
-        {
-            color = "sparkling/other"
-        }
+    
     }
     
     
@@ -247,9 +260,9 @@ class FirstWineTableViewController: UITableViewController
         
         print(foundWines.count, " found")
         
-        print(foundWines[300].title ?? "null")
-        print(foundWines[300].description ?? "null")
-        print(foundWines[300].matchPoints)
+        // print(foundWines[300].title ?? "null")
+        // print(foundWines[300].description ?? "null")
+        // print(foundWines[300].matchPoints)
         //print(data)
         
         

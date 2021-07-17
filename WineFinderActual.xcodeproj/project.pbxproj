@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8128BE6226A39A2A001AF28D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8128BE6126A39A2A001AF28D /* NavigationViewController.swift */; };
 		815A835226783B35003AD42E /* wineData.json in Resources */ = {isa = PBXBuildFile; fileRef = 815A835126783B35003AD42E /* wineData.json */; };
 		815A835426783FCC003AD42E /* WineReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A835326783FCC003AD42E /* WineReview.swift */; };
 		815A835626784156003AD42E /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A835526784156003AD42E /* DataLoader.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8128BE6126A39A2A001AF28D /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		815A835126783B35003AD42E /* wineData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = wineData.json; path = ../../../Downloads/wineData.json; sourceTree = "<group>"; };
 		815A835326783FCC003AD42E /* WineReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineReview.swift; sourceTree = "<group>"; };
 		815A835526784156003AD42E /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				815ADEDD267032FD00ED284E /* FirstWineTableViewController.xib */,
 				815A835326783FCC003AD42E /* WineReview.swift */,
 				815A835526784156003AD42E /* DataLoader.swift */,
+				8128BE6126A39A2A001AF28D /* NavigationViewController.swift */,
 			);
 			path = WineFinderActual;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8128BE6226A39A2A001AF28D /* NavigationViewController.swift in Sources */,
 				816AF3DD266C38D300F61BD3 /* CollectionViewController.swift in Sources */,
 				81CCCAEB266AF4AF0069CF97 /* AppDelegate.swift in Sources */,
 				815A835426783FCC003AD42E /* WineReview.swift in Sources */,
