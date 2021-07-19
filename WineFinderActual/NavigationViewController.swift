@@ -10,14 +10,15 @@ import UIKit
 // Made this class by adding the new cocoa touch class to the project folder
 // Then, to connect the class to the controller in storyboard:
 // 1. Go to the identity inspector, and specify it as the base class for the scene
-class NavigationViewController: UINavigationController {
+class NavigationViewController: UINavigationController
+{
 
   
     
     override func viewDidLoad()
     {
         // Need to find out how to connect the back button to resetting the view
-
+        
         
         // Do any additional setup after loading the view.
     }

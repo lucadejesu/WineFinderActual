@@ -158,6 +158,7 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
     
     var color = "Nothing"
     
+    // Check if color was specified, if not it will remain "Nothing"
     for attribute in attributes
     {
         if attribute == "red"
@@ -175,8 +176,13 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
     
     for wine in wines
     {
+        // Match score will keep track of the points in this custom score system
+        // Current wine is the current wine being looped through, in mutable form
+        // Matching attributes makes sure that if no descriptors matched, we ignore the wine and don't give it a score or append it
+        
         var matchScore = 0
         var currentWine = wine
+        var matchingAttributes = 0
         // Check if the price range fits
         if range != 0...1
         {
@@ -188,6 +194,8 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
             else
             {
                 matchScore = matchScore+1
+                matchingAttributes = matchingAttributes + 1
+                
             }
             
         }
@@ -201,6 +209,7 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
             else
             {
                 matchScore = matchScore+1
+                matchingAttributes = matchingAttributes + 1
             }
         }
         
@@ -213,11 +222,89 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
                 // If the descriptor matches the attribute, add a point, break the inner loop
                 if descriptor == attribute
                 {
-                    matchScore = matchScore+1
+                    matchScore = matchScore+2
+                    // Keep count of how many matched, so those will all descriptors can see a boost
+                    matchingAttributes = matchingAttributes + 1
                     break
                 }
             }
         }
+        
+        // If no attributes matched, skip over adding this wine.
+        if(matchScore == 0)
+        {
+            continue
+        }
+        
+        // If we made it here, then the wine is valid and its going to be recommended.
+        // We want to prioritize the well reviewed wines, so we can add extra points for those with better scores:
+        
+        let criticScore = Int(currentWine.points ?? "-1")
+        
+        // I created these ranges myself, there is no official range on winereview
+        let perfect = 95...100
+        let great = 90...95
+        let veryGood = 85...90
+        let good = 80...85
+        let decent = 75...80
+        let average = 70...75
+        let bad = 0...70
+        
+        
+        // Arbitrary point weight
+        if (perfect.contains(criticScore ?? 0))
+        {
+            matchScore = matchScore+10
+        }
+        else if (great.contains(criticScore ?? 0))
+        {
+            matchScore = matchScore+7
+        }
+        else if (veryGood.contains(criticScore ?? 0))
+        {
+            matchScore = matchScore+6
+        }
+        else if (good.contains(criticScore ?? 0))
+        {
+            matchScore = matchScore+5
+        }
+        else if (decent.contains(criticScore ?? 0))
+        {
+            matchScore = matchScore+3
+        }
+        else if (average.contains(criticScore ?? 0))
+        {
+            matchScore = matchScore+2
+        }
+        else if (bad.contains(criticScore ?? 0))
+        {
+            matchScore = matchScore+1
+        }
+        
+        //If all attributes matched, give extra points:
+        if(matchingAttributes == attributes.count)
+        {
+            // The more specific the attributes, the more points we want to add if this wine fulfills all of the attributes (it would be a closer match)
+            if (attributes.count == 1)
+            {
+                matchScore = matchScore+1
+            }
+            else if (attributes.count == 2)
+            {
+                matchScore = matchScore+4
+            }
+            else if (attributes.count == 3)
+            {
+                matchScore = matchScore+8
+            }
+            else if (attributes.count > 3)
+            {
+                matchScore = matchScore+10
+            }
+            
+            
+        }
+        
         
         currentWine.matchPoints = matchScore
         foundWines.append(currentWine)
@@ -227,7 +314,7 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
     
     return foundWines
 }
-    
+
 
 
 class FirstWineTableViewController: UITableViewController
@@ -235,6 +322,23 @@ class FirstWineTableViewController: UITableViewController
     var chosenAttributes: [String] = []
     let data = DataLoader().wineReviews
     var foundWines: [WineReview] = []
+    
+    @objc func goBack()
+    {
+        // It will go back to the "CollectionViewController" VC, and in that swift file, you can find the
+        // resetting of the view in "viewDidAppear"
+        // "viewDidAppear" happens whenever the view pops up, unlike "viewDidLoad"
+        self.navigationController?.popToRootViewController(animated: true)
+        
+    }
+    
+    // Function to assign actions and details for bar button
+    private func configureBarItems()
+    {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Go Back", style: .done, target: self, action: #selector(goBack))
+        
+    }
+    
     
     override func viewDidLoad()
     {
@@ -252,12 +356,16 @@ class FirstWineTableViewController: UITableViewController
         // Use our heap sort implementation:
         foundWines = heapSort(wines: foundWines)
         
-        
+        // The navigation controller bar items are connected to this class.
+        configureBarItems()
         
         print(foundWines[0].title ?? "null")
         print(foundWines[0].description ?? "null")
         print(foundWines[0].matchPoints)
-        
+        print(foundWines[0].points)
+        print()
+        //print(foundWines[500].matchPoints)
+       // print(foundWines[500].points)
         print(foundWines.count, " found")
         
         // print(foundWines[300].title ?? "null")

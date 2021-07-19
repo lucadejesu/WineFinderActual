@@ -11,7 +11,7 @@ import CoreData
 
 class CollectionViewController: UICollectionViewController
 {
-    
+    let findButton = UIButton(frame: CGRect(x:104,y:53,width:206,height:93))
     // Act as switches when the descriptors are selected:
     var selected: [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
@@ -23,9 +23,26 @@ class CollectionViewController: UICollectionViewController
     // This will be an array of actual chosen descriptors clicked on:
     var chosen: [String] = []
     
+    // When the view appears, aka when we go back on the next VC (popping it off the stack), reset the variables for a new search.
+    // Anything else that needs to be reset upon popping can be done here.
+    override func viewDidAppear(_ animated: Bool)
+    {
+        
+        selected = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+        chosen = []
+        
+        //  Reset all of the cells to the original gray color:
+        for cell in collectionView.visibleCells
+        {
+            cell.contentView.backgroundColor = .systemGray5
+        }
+        // Reset the find button to the original red color
+        findButton.backgroundColor = UIColor(red: 0.50, green: 0.00, blue: 0.00, alpha: 1.00)
+    }
     
     override func viewDidLoad()
     {
+        
         super.viewDidLoad()
         
     }
@@ -139,7 +156,7 @@ class CollectionViewController: UICollectionViewController
             // This is where we add the UI button as a subview and return it, so we can
             // wire up action to it.
             
-            let findButton = UIButton(frame: CGRect(x:104,y:53,width:206,height:93))
+            // let findButton = UIButton(frame: CGRect(x:104,y:53,width:206,height:93))
             findButton.setTitle("Find wines", for: .normal)
             
             // The selector is the IB action function above
@@ -167,6 +184,8 @@ class CollectionViewController: UICollectionViewController
     }
     
     // Make sure that we implement cell selection (when you click a label, what happens next?)
+    
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         // IndexPath row is numbered 0-26 (or 0-(# of attributes - 1))
