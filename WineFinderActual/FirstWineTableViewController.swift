@@ -127,7 +127,7 @@ func heapSort(wines: [WineReview]) -> [WineReview]
 func checkForRange(attributes: [String]) -> ClosedRange<Int>
 {
     // Ranges for price
-    let zeroToTen = 0...10
+    
     let tenToTwenty = 10...20
     let twentyToThirtyFive = 20...35
     let thirtyFivePlus = 35...10000
@@ -135,11 +135,7 @@ func checkForRange(attributes: [String]) -> ClosedRange<Int>
     for attribute in attributes
     {
         // Note the space in the string
-        if attribute == "1- 10 dollars"
-        {
-            return zeroToTen
-        }
-        else if attribute == "10-20 dollars"
+        if attribute == "10-20 dollars"
         {
             return tenToTwenty
         }
