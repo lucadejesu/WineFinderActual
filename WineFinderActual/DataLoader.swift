@@ -21,7 +21,7 @@ public class DataLoader
     
     func load()
     {
-        if let fileLocation = Bundle.main.url(forResource: "wineData", withExtension: "json")
+        if let fileLocation = Bundle.main.url(forResource: "NEWwineData", withExtension: "json")
         {
             // do catch in case of an error
             do

@@ -17,7 +17,7 @@ class CollectionViewController: UICollectionViewController
     
     // List of top wine descriptors used in reviews
     // From the top 60 words in the reviews, in order of flavor, texture, body
-    let dataSource: [String] = ["fruit", "cherry", "berry", "spice", "oak", "citrus", "plum", "pepper", "vanilla", "lemon", "soft", "sweet", "dry", "juicy", "light", "full", "blend", "red",
+    let dataSource: [String] = ["fruit", "cherry", "spice", "rich", "oak", "pepper", "lemon", "savory", "raspberry", "strawberry", "peach", "plum", "light", "full", "herb", "dark", "citrus", "berry", "red",
     "white", "1- 10 dollars", "10-20 dollars","20-35 dollars", ">= 35 dollars"]
     
     // This will be an array of actual chosen descriptors clicked on:

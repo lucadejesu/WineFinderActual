@@ -377,6 +377,7 @@ class FirstWineTableViewController: UITableViewController
         print(foundWines[0].description ?? "null")
         print(foundWines[0].matchPoints)
         print(foundWines[0].points)
+        print(foundWines[0].price)
         print()
         //print(foundWines[500].matchPoints)
        // print(foundWines[500].points)
@@ -407,7 +408,7 @@ class FirstWineTableViewController: UITableViewController
     {
         
         // Number of rows can be the max number of wines to be presented ************
-        return 10
+        return foundWines.count
     }
 
     
