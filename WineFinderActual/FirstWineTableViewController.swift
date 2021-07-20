@@ -16,8 +16,18 @@ import CoreData
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
 
 
-// Helper function for heap sort:
+// Extension on arrays that can eliminate duplicate elements from an array.
+// This will be used for removing the duplicate descriptors so that matches are not boosted by the same word in the review being used repeatedly
+public extension Array where Element: Hashable
+{
+    func getUnique() -> [Element]
+    {
+        var seen = Set<Element>()
+        return filter{ seen.insert($0).inserted }
+    }
+}
 
+// Helper function for heap sort:
 func heapify(wines: [WineReview], size: Int, index: Int) -> [WineReview]
 {
     var sortedWines = wines
@@ -213,8 +223,12 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
             }
         }
         
+        
+        let uniqueDescriptors = currentWine.description?.getUnique()
+        
+        
         // Loop through all the wine description words
-        for descriptor in wine.description ?? []
+        for descriptor in uniqueDescriptors ?? []
         {
             // Loop through all the attributes
             for attribute in attributes
@@ -222,7 +236,7 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
                 // If the descriptor matches the attribute, add a point, break the inner loop
                 if descriptor == attribute
                 {
-                    matchScore = matchScore+2
+                    matchScore = matchScore+7
                     // Keep count of how many matched, so those will all descriptors can see a boost
                     matchingAttributes = matchingAttributes + 1
                     break
@@ -254,19 +268,19 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
         // Arbitrary point weight
         if (perfect.contains(criticScore ?? 0))
         {
-            matchScore = matchScore+10
+            matchScore = matchScore+7
         }
         else if (great.contains(criticScore ?? 0))
         {
-            matchScore = matchScore+7
+            matchScore = matchScore+6
         }
         else if (veryGood.contains(criticScore ?? 0))
         {
-            matchScore = matchScore+6
+            matchScore = matchScore+5
         }
         else if (good.contains(criticScore ?? 0))
         {
-            matchScore = matchScore+5
+            matchScore = matchScore+4
         }
         else if (decent.contains(criticScore ?? 0))
         {
@@ -291,15 +305,15 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
             }
             else if (attributes.count == 2)
             {
-                matchScore = matchScore+4
+                matchScore = matchScore+2
             }
             else if (attributes.count == 3)
             {
-                matchScore = matchScore+8
+                matchScore = matchScore+3
             }
             else if (attributes.count > 3)
             {
-                matchScore = matchScore+10
+                matchScore = matchScore+7
             }
             
             
