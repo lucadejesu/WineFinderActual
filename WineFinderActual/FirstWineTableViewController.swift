@@ -374,7 +374,7 @@ class FirstWineTableViewController: UITableViewController
         print(foundWines[0].matchPoints)
         print(foundWines[0].points)
         print(foundWines[0].price)
-        print()
+        print("total wines", data.count)
         //print(foundWines[500].matchPoints)
        // print(foundWines[500].points)
         print(foundWines.count, " found")
