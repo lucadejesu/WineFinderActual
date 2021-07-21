@@ -157,7 +157,7 @@ func checkForRange(attributes: [String]) -> ClosedRange<Int>
         {
             return twentyToThirtyFive
         }
-        else if attribute == ">=35 dollars"
+        else if attribute == ">= 35 dollars"
         {
             return thirtyFivePlus
         }
@@ -175,9 +175,6 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
 {
     // Only matches go here, along with their newly added "matchPoints"
     var foundWines: [WineReview] = []
-    
-    // Mutable copy of the attributes that match, so we can keep track of what matched.
-    var matchingDescriptors: [String] = []
     
     // Attributes is what was passed in from the user, in the above
     let range = checkForRange(attributes: attributes)
@@ -209,6 +206,8 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
         var matchScore = 0
         var currentWine = wine
         var matchingAttributes = 0
+        
+        // To be added to the found wine, indicating what words matched:
         var matchingDescriptors: [String] = []
         
         
