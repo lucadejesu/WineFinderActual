@@ -27,5 +27,6 @@ struct WineReview: Codable
     var price: Int?
     var color: String?
     var matchPoints = 0
+    var matchedDescriptors: [String] = []
 }
 

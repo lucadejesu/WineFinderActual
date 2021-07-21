@@ -16,6 +16,20 @@ import CoreData
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
 
 
+class WineTableViewCell: UITableViewCell
+{
+    @IBOutlet weak var WineName: UILabel!
+    @IBOutlet weak var WineType: UILabel!
+    @IBOutlet weak var Descriptors: UILabel!
+    @IBOutlet weak var Price: UILabel!
+    @IBOutlet weak var FindSimilar: UIButton!
+}
+
+
+
+
+
+
 // Extension on arrays that can eliminate duplicate elements from an array.
 // This will be used for removing the duplicate descriptors so that matches are not boosted by the same word in the review being used repeatedly
 public extension Array where Element: Hashable
@@ -154,10 +168,16 @@ func checkForRange(attributes: [String]) -> ClosedRange<Int>
     
 }
 
+
+
+
 func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
 {
     // Only matches go here, along with their newly added "matchPoints"
     var foundWines: [WineReview] = []
+    
+    // Mutable copy of the attributes that match, so we can keep track of what matched.
+    var matchingDescriptors: [String] = []
     
     // Attributes is what was passed in from the user, in the above
     let range = checkForRange(attributes: attributes)
@@ -189,6 +209,9 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
         var matchScore = 0
         var currentWine = wine
         var matchingAttributes = 0
+        var matchingDescriptors: [String] = []
+        
+        
         // Check if the price range fits
         if range != 0...1
         {
@@ -235,6 +258,9 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
                     matchScore = matchScore+7
                     // Keep count of how many matched, so those will all descriptors can see a boost
                     matchingAttributes = matchingAttributes + 1
+                    
+                    // Add the attribute to the matching descriptors array:
+                    matchingDescriptors.append(descriptor)
                     break
                 }
             }
@@ -317,9 +343,12 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
         
         
         currentWine.matchPoints = matchScore
+        currentWine.matchedDescriptors = matchingDescriptors
         foundWines.append(currentWine)
         
+        
     }
+    
     
     
     return foundWines
@@ -332,6 +361,7 @@ class FirstWineTableViewController: UITableViewController
     var chosenAttributes: [String] = []
     let data = DataLoader().wineReviews
     var foundWines: [WineReview] = []
+    
     
     @objc func goBack()
     {
@@ -359,6 +389,7 @@ class FirstWineTableViewController: UITableViewController
         
         
         foundWines = matchWines(attributes: chosenAttributes, wines: data)
+        
         
         
         // Need to sort the wines by:
@@ -410,7 +441,7 @@ class FirstWineTableViewController: UITableViewController
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chicken", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "chicken", for: indexPath) as! WineTableViewCell
         // Configure the cells here
         
         
@@ -418,16 +449,40 @@ class FirstWineTableViewController: UITableViewController
         // The loaded data from the JSON file is in 'data' - its an array of 1000 wine review
         // objects
         
-        // example of calling a logic method from the protocol
-        // matchWines(attributes: chosenAttributes, wines: data)
         
         
         
-        // Configure the cell...
-        cell.textLabel?.text = foundWines[indexPath.row].title
-        print(indexPath.row)
+        // Configure the cells - class for these custom cells is at the top of the file
+        cell.WineName.text = foundWines[indexPath.row].title
+        
+        
+        let stringVariety = "Variety: \(foundWines[indexPath.row].variety ?? "Unknown")"
+        cell.WineType.text = stringVariety
+        
+        let stringRepresentation = foundWines[indexPath.row].matchedDescriptors.joined(separator: ", ")
+        cell.Descriptors.text = stringRepresentation
+        let stringPrice = "$\(Int(foundWines[indexPath.row].price ?? 0))"
+        cell.Price.text = stringPrice
+        
+        cell.WineName.adjustsFontSizeToFitWidth = true
+        cell.WineType.adjustsFontSizeToFitWidth = true
+        cell.Price.adjustsFontSizeToFitWidth = true
+        cell.Descriptors.adjustsFontSizeToFitWidth = true
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        
+        
+        
+        
         return cell
     }
+    
+    
+    // Allows the changing of the cell heights, should be the same for each row/cell
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 200
+    }
+    
     
     /*
     // Override to support conditional editing of the table view.
