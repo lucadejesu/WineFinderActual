@@ -23,6 +23,7 @@ class WineTableViewCell: UITableViewCell
     @IBOutlet weak var Descriptors: UILabel!
     @IBOutlet weak var Price: UILabel!
     @IBOutlet weak var FindSimilar: UIButton!
+    @IBOutlet weak var CriticScore: UILabel!
 }
 
 
@@ -274,47 +275,18 @@ func matchWines(attributes: [String], wines: [WineReview]) -> [WineReview]
         // If we made it here, then the wine is valid and its going to be recommended.
         // We want to prioritize the well reviewed wines, so we can add extra points for those with better scores:
         
-        let criticScore = Int(currentWine.points ?? "-1")
+        let criticScore = Int(currentWine.points )
         
-        // I created these ranges myself, there is no official range on winereview
+        // Most wines are well reviewed in our data set.
+        // So, only the best of the best should be pushed to the top, and a way to do that would be to only give points for those scored 95 and above
         let perfect = 95...100
-        let great = 90...95
-        let veryGood = 85...90
-        let good = 80...85
-        let decent = 75...80
-        let average = 70...75
-        let bad = 0...70
-        
         
         // Arbitrary point weight
         if (perfect.contains(criticScore ?? 0))
         {
-            matchScore = matchScore+7
-        }
-        else if (great.contains(criticScore ?? 0))
-        {
-            matchScore = matchScore+6
-        }
-        else if (veryGood.contains(criticScore ?? 0))
-        {
-            matchScore = matchScore+5
-        }
-        else if (good.contains(criticScore ?? 0))
-        {
             matchScore = matchScore+4
         }
-        else if (decent.contains(criticScore ?? 0))
-        {
-            matchScore = matchScore+3
-        }
-        else if (average.contains(criticScore ?? 0))
-        {
-            matchScore = matchScore+2
-        }
-        else if (bad.contains(criticScore ?? 0))
-        {
-            matchScore = matchScore+1
-        }
+        
         
         //If all attributes matched, give extra points:
         if(matchingAttributes == attributes.count)
@@ -404,6 +376,7 @@ class FirstWineTableViewController: UITableViewController
         print(foundWines[0].matchPoints)
         print(foundWines[0].points)
         print(foundWines[0].price)
+        print(foundWines[0].taster_name)
         print("total wines", data.count)
         //print(foundWines[500].matchPoints)
        // print(foundWines[500].points)
@@ -463,10 +436,14 @@ class FirstWineTableViewController: UITableViewController
         let stringPrice = "$\(Int(foundWines[indexPath.row].price ?? 0))"
         cell.Price.text = stringPrice
         
+        let stringCritic = "Score: \(foundWines[indexPath.row].points) (from \(foundWines[indexPath.row].taster_name) of www.winemag.com)"
+        cell.CriticScore.text = stringCritic
+        
         cell.WineName.adjustsFontSizeToFitWidth = true
         cell.WineType.adjustsFontSizeToFitWidth = true
         cell.Price.adjustsFontSizeToFitWidth = true
         cell.Descriptors.adjustsFontSizeToFitWidth = true
+        cell.CriticScore.adjustsFontSizeToFitWidth = true
         cell.textLabel?.adjustsFontSizeToFitWidth = true
         
         
@@ -479,7 +456,7 @@ class FirstWineTableViewController: UITableViewController
     // Allows the changing of the cell heights, should be the same for each row/cell
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 200
+        return 280
     }
     
     
