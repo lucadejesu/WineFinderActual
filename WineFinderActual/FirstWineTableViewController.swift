@@ -416,11 +416,25 @@ class FirstWineTableViewController: UITableViewController
         
     }
     
+    @objc func search()
+    {
+        // Instantiate the next view controller
+        guard let searchPage = storyboard?.instantiateViewController(identifier: "searchView") as? SearchViewController else { return }
+        
+        searchPage.data = data
+        
+        navigationController?.pushViewController(searchPage, animated: true)
+    }
+    
+    
     // Function to assign actions and details for bar button
     private func configureBarItems()
     {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Go Back", style: .done, target: self, action: #selector(goBack))
-        
+        navigationItem.leftBarButtonItem?.tintColor = .white
+        // Top right will allow for the user to search for a wine, to check if it is in the database
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search wines", style: .done, target: self, action: #selector(search))
+        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     
@@ -515,9 +529,21 @@ class FirstWineTableViewController: UITableViewController
         {
             cell.Descriptors.text = stringDescRepresentation
         }
-        let stringPrice = "$\(Int(foundWines[indexPath.row].price ?? 0))"
-        cell.Price.text = stringPrice
         
+        // Get price formatted with a US dollar sign prefix
+        let stringPrice = "$\(Int(foundWines[indexPath.row].price ?? 0))"
+        
+        // Some of the prices were not reported or nil, turned into 0.
+        // If this is the case, do not list an incorrect '0 dollar' price,
+        // rather state that the price is unknown
+        if Int(foundWines[indexPath.row].price ?? 0) == 0
+        {
+            cell.Price.text = "unknown price"
+        }
+        else
+        {
+            cell.Price.text = stringPrice
+        }
         let stringCritic = "Score: \(foundWines[indexPath.row].points) (from \(foundWines[indexPath.row].taster_name) of www.winemag.com)"
         cell.CriticScore.text = stringCritic
         
