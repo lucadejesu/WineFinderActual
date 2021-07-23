@@ -147,9 +147,82 @@ func checkForRange(attributes: [String]) -> ClosedRange<Int>
     let twentyToThirtyFive = 20...35
     let thirtyFivePlus = 35...10000
     
+    var rangeArray: [ClosedRange<Int>] = []
+    
+    // Check if they selected more than 1 range
+    
     for attribute in attributes
     {
-        // Note the space in the string
+        if attribute == "10-20 dollars"
+        {
+            rangeArray.append(tenToTwenty)
+        }
+        else if attribute == "20-35 dollars"
+        {
+            rangeArray.append(twentyToThirtyFive)
+        }
+        else if attribute == ">= 35 dollars"
+        {
+            rangeArray.append(thirtyFivePlus)
+        }
+    }
+    
+    if rangeArray.count > 1
+    {
+        // All 3 ranges selected:
+        if rangeArray.count > 2
+        {
+            return 10...10000
+        }
+        // Just 2 selected, need to find which two:
+        else
+        {
+            for range in rangeArray
+            {
+                // It will be either this, or if not, for sure the range will be both of the other two
+                if range == tenToTwenty
+                {
+                    for range in rangeArray
+                    {
+                        // 10...20 and 20...35 are selected
+                        if range == twentyToThirtyFive
+                        {
+                            return 10...35
+                        }
+                        // 10...20 and 35...10000 are selected
+                        else if range == thirtyFivePlus
+                        {
+                            return 10...10000
+                        }
+                    }
+                }
+                // Make sure we have all combinations possible searched
+                // I'd like to avoid nested loops but this is, at max, 3 elements, so it
+                // really doesnt matter much time-wise
+                else if range == twentyToThirtyFive
+                {
+                    for range in rangeArray
+                    {
+                        // 10...20 and 20...35 are selected
+                        if range == tenToTwenty
+                        {
+                            return 10...35
+                        }
+                        // 20...35 and 35...10000 are selected
+                        else if range == thirtyFivePlus
+                        {
+                            return 20...10000
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    for attribute in attributes
+    {
+        
         if attribute == "10-20 dollars"
         {
             return tenToTwenty
@@ -431,14 +504,24 @@ class FirstWineTableViewController: UITableViewController
         let stringVariety = "Variety: \(foundWines[indexPath.row].variety ?? "Unknown")"
         cell.WineType.text = stringVariety
         
-        let stringRepresentation = foundWines[indexPath.row].matchedDescriptors.joined(separator: ", ")
-        cell.Descriptors.text = stringRepresentation
+        let stringDescRepresentation = foundWines[indexPath.row].matchedDescriptors.joined(separator: ", ")
+        
+        // So that the "matching words" section doesnt just appear empty:
+        if (stringDescRepresentation.isEmpty)
+        {
+            cell.Descriptors.text = "Price range/Color selection matched"
+        }
+        else
+        {
+            cell.Descriptors.text = stringDescRepresentation
+        }
         let stringPrice = "$\(Int(foundWines[indexPath.row].price ?? 0))"
         cell.Price.text = stringPrice
         
         let stringCritic = "Score: \(foundWines[indexPath.row].points) (from \(foundWines[indexPath.row].taster_name) of www.winemag.com)"
         cell.CriticScore.text = stringCritic
         
+        // Adjust each label in case the labels get long, we wanna display the entire label still:
         cell.WineName.adjustsFontSizeToFitWidth = true
         cell.WineType.adjustsFontSizeToFitWidth = true
         cell.Price.adjustsFontSizeToFitWidth = true
