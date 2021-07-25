@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -201,48 +200,61 @@
             </objects>
             <point key="canvasLocation" x="1900.0000000000002" y="-74.330357142857139"/>
         </scene>
-        <!--Search View Controller-->
-        <scene sceneID="bJh-gG-5A9">
+        <!--Search Table View Controller-->
+        <scene sceneID="deT-er-psX">
             <objects>
-                <viewController storyboardIdentifier="searchView" id="0eZ-iN-WEg" customClass="SearchViewController" customModule="WineFinderActual" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jKM-cf-tdX">
+                <tableViewController storyboardIdentifier="searchTable" id="DqA-CK-i6z" customClass="SearchTableViewController" customModule="WineFinderActual" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="crm-BV-sgd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WJb-Od-KZo">
-                                <rect key="frame" x="20" y="158" width="374" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qzR-3X-0pS">
-                                <rect key="frame" x="0.0" y="200" width="414" height="662"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter the wine name . . ." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZF2-gy-WRW">
-                                <rect key="frame" x="20" y="117" width="327" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="qzR-3X-0pS" firstAttribute="leading" secondItem="bbw-4M-NYA" secondAttribute="leading" id="7QW-DP-CIA"/>
-                            <constraint firstItem="qzR-3X-0pS" firstAttribute="top" secondItem="WJb-Od-KZo" secondAttribute="bottom" id="Hpy-qV-vMa"/>
-                            <constraint firstItem="bbw-4M-NYA" firstAttribute="trailing" secondItem="qzR-3X-0pS" secondAttribute="trailing" id="PmL-3d-g7W"/>
-                            <constraint firstItem="bbw-4M-NYA" firstAttribute="bottom" secondItem="qzR-3X-0pS" secondAttribute="bottom" id="ZXj-5e-xPi"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="bbw-4M-NYA"/>
-                    </view>
-                    <connections>
-                        <outlet property="searchBox" destination="WJb-Od-KZo" id="aad-RL-etc"/>
-                        <outlet property="searchResultsTable" destination="qzR-3X-0pS" id="2fs-ZB-r9c"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CMT-0t-RWa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="452" id="wzT-zT-Aux" customClass="searchTableCell" customModule="WineFinderActual" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="452"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wzT-zT-Aux" id="phb-LK-Jt1">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="452"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wine Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpy-qF-xnH">
+                                            <rect key="frame" x="20" y="11" width="374" height="61"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6s-Sa-EaQ">
+                                            <rect key="frame" x="20" y="80" width="374" height="140"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="20"/>
+                                            <color key="textColor" red="0.59168555700000003" green="0.0" blue="0.0071517457219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1c9-xW-Jf1">
+                                            <rect key="frame" x="20" y="228" width="374" height="48"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="20"/>
+                                            <color key="textColor" red="0.20093488640000001" green="0.38961860640000001" blue="0.20646797389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptors" destination="n6s-Sa-EaQ" id="6Gn-Uq-Zl3"/>
+                                    <outlet property="score" destination="1c9-xW-Jf1" id="ZNV-F4-usy"/>
+                                    <outlet property="wineTitle" destination="qpy-qF-xnH" id="ib4-fY-nU1"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DqA-CK-i6z" id="BPo-Zb-s0w"/>
+                            <outlet property="delegate" destination="DqA-CK-i6z" id="JQI-IY-j3V"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J9O-jc-33S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2818.840579710145" y="-74.330357142857139"/>
+            <point key="canvasLocation" x="2728.985507246377" y="-74.330357142857139"/>
         </scene>
         <!--Navigation View Controller-->
         <scene sceneID="9tO-Tc-cUs">

@@ -16,7 +16,7 @@ struct WineReview: Codable
     // types: ALL are Strings, except price, which is an int
     private enum CodingKeys : String, CodingKey
     {
-        case variety, points, winery, description, country, price, color, title, taster_name
+        case variety, points, winery, description, country, price, color, title, taster_name, full_description
     }
     var variety: String?
     var taster_name: String
@@ -29,5 +29,6 @@ struct WineReview: Codable
     var color: String?
     var matchPoints = 0
     var matchedDescriptors: [String] = []
+    var full_description: String?
 }
 

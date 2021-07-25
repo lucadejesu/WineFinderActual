@@ -419,7 +419,7 @@ class FirstWineTableViewController: UITableViewController
     @objc func search()
     {
         // Instantiate the next view controller
-        guard let searchPage = storyboard?.instantiateViewController(identifier: "searchView") as? SearchViewController else { return }
+        guard let searchPage = storyboard?.instantiateViewController(identifier: "searchTable") as? SearchTableViewController else { return }
         
         searchPage.data = data
         

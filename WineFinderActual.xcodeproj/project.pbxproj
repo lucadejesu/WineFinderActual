@@ -12,6 +12,7 @@
 		815A835426783FCC003AD42E /* WineReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A835326783FCC003AD42E /* WineReview.swift */; };
 		815A835626784156003AD42E /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A835526784156003AD42E /* DataLoader.swift */; };
 		815ADEDE267032FD00ED284E /* FirstWineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815ADEDC267032FD00ED284E /* FirstWineTableViewController.swift */; };
+		8165C67326ACDDA700A625CE /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8165C67226ACDDA700A625CE /* SearchTableViewController.swift */; };
 		816AF3DD266C38D300F61BD3 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816AF3DC266C38D300F61BD3 /* CollectionViewController.swift */; };
 		816AF3DF266C3ADC00F61BD3 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816AF3DE266C3ADC00F61BD3 /* CollectionViewCell.swift */; };
 		81CCCAEB266AF4AF0069CF97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CCCAEA266AF4AF0069CF97 /* AppDelegate.swift */; };
@@ -21,7 +22,6 @@
 		81CCCAF7266AF4B40069CF97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81CCCAF5266AF4B40069CF97 /* LaunchScreen.storyboard */; };
 		81CCCB02266AF4B40069CF97 /* WineFinderActualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CCCB01266AF4B40069CF97 /* WineFinderActualTests.swift */; };
 		81CCCB0D266AF4B40069CF97 /* WineFinderActualUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CCCB0C266AF4B40069CF97 /* WineFinderActualUITests.swift */; };
-		81DD8BE426AB70B800CFA624 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD8BE326AB70B800CFA624 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +47,7 @@
 		815A835326783FCC003AD42E /* WineReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineReview.swift; sourceTree = "<group>"; };
 		815A835526784156003AD42E /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		815ADEDC267032FD00ED284E /* FirstWineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstWineTableViewController.swift; sourceTree = "<group>"; };
+		8165C67226ACDDA700A625CE /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		816AF3DC266C38D300F61BD3 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		816AF3DE266C3ADC00F61BD3 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		81CCCAE7266AF4AF0069CF97 /* WineFinderActual.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WineFinderActual.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,7 +63,6 @@
 		81CCCB08266AF4B40069CF97 /* WineFinderActualUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WineFinderActualUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CCCB0C266AF4B40069CF97 /* WineFinderActualUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineFinderActualUITests.swift; sourceTree = "<group>"; };
 		81CCCB0E266AF4B40069CF97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		81DD8BE326AB70B800CFA624 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +126,7 @@
 				815A835326783FCC003AD42E /* WineReview.swift */,
 				815A835526784156003AD42E /* DataLoader.swift */,
 				8128BE6126A39A2A001AF28D /* NavigationViewController.swift */,
-				81DD8BE326AB70B800CFA624 /* SearchViewController.swift */,
+				8165C67226ACDDA700A625CE /* SearchTableViewController.swift */,
 			);
 			path = WineFinderActual;
 			sourceTree = "<group>";
@@ -282,9 +282,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8128BE6226A39A2A001AF28D /* NavigationViewController.swift in Sources */,
+				8165C67326ACDDA700A625CE /* SearchTableViewController.swift in Sources */,
 				816AF3DD266C38D300F61BD3 /* CollectionViewController.swift in Sources */,
 				81CCCAEB266AF4AF0069CF97 /* AppDelegate.swift in Sources */,
-				81DD8BE426AB70B800CFA624 /* SearchViewController.swift in Sources */,
 				815A835426783FCC003AD42E /* WineReview.swift in Sources */,
 				816AF3DF266C3ADC00F61BD3 /* CollectionViewCell.swift in Sources */,
 				815A835626784156003AD42E /* DataLoader.swift in Sources */,
