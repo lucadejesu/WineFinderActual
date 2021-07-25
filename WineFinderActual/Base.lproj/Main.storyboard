@@ -208,9 +208,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="k2o-37-iLI">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="452" id="wzT-zT-Aux" customClass="searchTableCell" customModule="WineFinderActual" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="452"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="452"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wzT-zT-Aux" id="phb-LK-Jt1">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="452"/>
@@ -251,6 +256,9 @@
                             <outlet property="delegate" destination="DqA-CK-i6z" id="JQI-IY-j3V"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="searchBar" destination="k2o-37-iLI" id="vV8-6l-HJZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9O-jc-33S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

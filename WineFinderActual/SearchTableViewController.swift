@@ -17,11 +17,14 @@ class searchTableCell: UITableViewCell
     @IBOutlet weak var descriptors: UILabel!
     
 }
-class SearchTableViewController: UITableViewController {
+class SearchTableViewController: UITableViewController, UISearchBarDelegate {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     // All wines in the current dataset:
     var data: [WineReview] = []
-    
+    // Exists, but is not initialized
+    var filteredData: [WineReview]!
     
     // Important things in the search: fine the wine by name, like a wine lookup from one
     // that was found at the store
@@ -29,7 +32,12 @@ class SearchTableViewController: UITableViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        
+        
+        searchBar.delegate = self
+        
+        // Initialize the filtered data variable:
+        filteredData = data
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -46,7 +54,7 @@ class SearchTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return data.count
+        return filteredData.count
     }
 
     
@@ -55,17 +63,17 @@ class SearchTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! searchTableCell
         
         // Outfit the top of the cell with the wine title
-        cell.wineTitle.text = data[indexPath.row].title
+        cell.wineTitle.text = filteredData[indexPath.row].title
         cell.wineTitle.adjustsFontSizeToFitWidth = true
         
         // Let the user read the full review
-        let stringDescRepresentation = (data[indexPath.row].full_description)
+        let stringDescRepresentation = (filteredData[indexPath.row].full_description)
         let trimmed = stringDescRepresentation?.trimmingCharacters(in: .whitespacesAndNewlines)
         cell.descriptors.text = trimmed
         cell.descriptors.adjustsFontSizeToFitWidth = true
     
         // Display the wine score and the critic who scored it
-        let stringCritic = "Score: \(data[indexPath.row].points) (from \(data[indexPath.row].taster_name) of www.winemag.com)"
+        let stringCritic = "Score: \(filteredData[indexPath.row].points) (from \(filteredData[indexPath.row].taster_name) of www.winemag.com)"
         cell.score.text = stringCritic
         cell.score.adjustsFontSizeToFitWidth = true
         
@@ -79,6 +87,38 @@ class SearchTableViewController: UITableViewController {
     {
         return 280
     }
+    
+    // Mark :- configuring the search bar
+    
+    // When ever text in search bar changes, this code is run:
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
+    {
+        filteredData = []
+        
+        // What happens when you delete something from the search bar?
+        if searchText == ""
+        {
+            filteredData = data
+        }
+            
+        // Else: so that you only filter and add when something is actually being searched:
+        else
+        {
+            for wine in data
+            {
+                if wine.title?.lowercased().contains(searchText.lowercased()) ?? false
+                {
+                filteredData.append(wine)
+                }
+            }
+        }
+        // So the search is refreshed every time, and filtering occurs
+        self.tableView.reloadData()
+        
+    }
+    
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
