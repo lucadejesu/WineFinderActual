@@ -479,8 +479,10 @@ class FirstWineTableViewController: UITableViewController
     {
         for cell in tableView.visibleCells
         {
+            // Change the cells button color
             let currCell = cell as! WineTableViewCell
             currCell.FindSimilar.backgroundColor = .systemGray2
+            
         }
     }
     
@@ -607,6 +609,8 @@ class FirstWineTableViewController: UITableViewController
         // Each find similar will do a different wine matching:
         cell.FindSimilar.addTarget(self, action: #selector(findSimilarTapped), for: .touchUpInside)
         
+        // Rounded look for the button, matching previous button style
+        cell.FindSimilar.layer.cornerRadius = 10
         
         
         return cell
