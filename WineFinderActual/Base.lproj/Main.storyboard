@@ -175,6 +175,9 @@
                                             <state key="normal" title="Find similar">
                                                 <color key="titleColor" red="0.59168555700000003" green="0.0" blue="0.0071517457219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </state>
+                                            <connections>
+                                                <action selector="findSimilarTapped:" destination="e21-4e-W5h" eventType="touchUpInside" id="yIc-AB-m76"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -263,6 +266,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9O-jc-33S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2728.985507246377" y="-74.330357142857139"/>
+        </scene>
+        <!--Recommended Table View Controller-->
+        <scene sceneID="x8x-tj-blA">
+            <objects>
+                <tableViewController storyboardIdentifier="recommendedTableView" id="xxm-uf-hPp" customClass="RecommendedTableViewController" customModule="WineFinderActual" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="w9r-FP-PFT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="0w1-fU-YHt">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0w1-fU-YHt" id="Ow6-TH-cb1">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xxm-uf-hPp" id="DkK-p6-qgb"/>
+                            <outlet property="delegate" destination="xxm-uf-hPp" id="ya8-EW-cVd"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WQd-or-bBI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3490" y="-74"/>
         </scene>
         <!--Navigation View Controller-->
         <scene sceneID="9tO-Tc-cUs">

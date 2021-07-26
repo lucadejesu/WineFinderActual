@@ -22,6 +22,7 @@
 		81CCCAF7266AF4B40069CF97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81CCCAF5266AF4B40069CF97 /* LaunchScreen.storyboard */; };
 		81CCCB02266AF4B40069CF97 /* WineFinderActualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CCCB01266AF4B40069CF97 /* WineFinderActualTests.swift */; };
 		81CCCB0D266AF4B40069CF97 /* WineFinderActualUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CCCB0C266AF4B40069CF97 /* WineFinderActualUITests.swift */; };
+		81CDB31C26AF3C5500A4C79C /* RecommendedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CDB31B26AF3C5500A4C79C /* RecommendedTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		81CCCB08266AF4B40069CF97 /* WineFinderActualUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WineFinderActualUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CCCB0C266AF4B40069CF97 /* WineFinderActualUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineFinderActualUITests.swift; sourceTree = "<group>"; };
 		81CCCB0E266AF4B40069CF97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81CDB31B26AF3C5500A4C79C /* RecommendedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				815A835526784156003AD42E /* DataLoader.swift */,
 				8128BE6126A39A2A001AF28D /* NavigationViewController.swift */,
 				8165C67226ACDDA700A625CE /* SearchTableViewController.swift */,
+				81CDB31B26AF3C5500A4C79C /* RecommendedTableViewController.swift */,
 			);
 			path = WineFinderActual;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				8128BE6226A39A2A001AF28D /* NavigationViewController.swift in Sources */,
 				8165C67326ACDDA700A625CE /* SearchTableViewController.swift in Sources */,
 				816AF3DD266C38D300F61BD3 /* CollectionViewController.swift in Sources */,
+				81CDB31C26AF3C5500A4C79C /* RecommendedTableViewController.swift in Sources */,
 				81CCCAEB266AF4AF0069CF97 /* AppDelegate.swift in Sources */,
 				815A835426783FCC003AD42E /* WineReview.swift in Sources */,
 				816AF3DF266C3ADC00F61BD3 /* CollectionViewCell.swift in Sources */,

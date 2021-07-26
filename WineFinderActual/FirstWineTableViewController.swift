@@ -27,10 +27,6 @@ class WineTableViewCell: UITableViewCell
 }
 
 
-
-
-
-
 // Extension on arrays that can eliminate duplicate elements from an array.
 // This will be used for removing the duplicate descriptors so that matches are not boosted by the same word in the review being used repeatedly
 public extension Array where Element: Hashable
@@ -406,6 +402,47 @@ class FirstWineTableViewController: UITableViewController
     let data = DataLoader().wineReviews
     var foundWines: [WineReview] = []
     
+    // We transition to the next page, but each transition is different: a different
+    // wine sends this page as the next one each time
+    @IBAction func findSimilarTapped(_ sender: UIButton)
+    {
+        
+        sender.backgroundColor = .darkGray
+            
+        guard let nextPage = storyboard?.instantiateViewController(identifier: "recommendedTableView") as? RecommendedTableViewController else { return }
+        
+        // Pass over the wine data, we will use the full database to recommend new wines
+        nextPage.data = data
+        
+        // Get the index path row for the specific button:
+        var superView = sender.superview
+        while let view = superView, !(view is UITableViewCell)
+        {
+            superView = view.superview
+        }
+        
+        guard let cell = superView as? UITableViewCell else
+        {
+            print("Button is not within a table view cell")
+            return
+        }
+        
+        guard let indexPath = tableView.indexPath(for: cell) else
+        {
+            print("Failed to get index path for the cell")
+            return
+        }
+        
+        
+        
+        
+        // Pass the specific wine that was clicked:
+        
+        nextPage.wineModel = foundWines[indexPath.row]
+        
+        
+        navigationController?.pushViewController(nextPage, animated: true)
+    }
     
     @objc func goBack()
     {
@@ -436,6 +473,17 @@ class FirstWineTableViewController: UITableViewController
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search wines", style: .done, target: self, action: #selector(search))
         navigationItem.rightBarButtonItem?.tintColor = .white
     }
+    
+    // Stuff we need to do when the back button is pressed from the 'recommended wines' page
+    override func viewDidAppear(_ animated: Bool)
+    {
+        for cell in tableView.visibleCells
+        {
+            let currCell = cell as! WineTableViewCell
+            currCell.FindSimilar.backgroundColor = .systemGray2
+        }
+    }
+    
     
     
     override func viewDidLoad()
@@ -555,6 +603,9 @@ class FirstWineTableViewController: UITableViewController
         cell.CriticScore.adjustsFontSizeToFitWidth = true
         cell.textLabel?.adjustsFontSizeToFitWidth = true
         
+        
+        // Each find similar will do a different wine matching:
+        cell.FindSimilar.addTarget(self, action: #selector(findSimilarTapped), for: .touchUpInside)
         
         
         
