@@ -7,7 +7,35 @@
 //
 
 import UIKit
+import NaturalLanguage
+import Foundation
 
+// Current idea: build a kNN model in Keras, convert it to CoreML model,
+// use this CoreML model to recommend new wines.
+// Probably need a new set of wine reviews to recommend based on.
+
+// We can get word embeddings with this function.
+// We can then get word embeddings for each word within a wine review
+// then we have a vector of words and their embeddings
+private func dot(_ a: [Double], _ b: [Double]) -> Double
+{
+    assert(a.count == b.count, "Vectors must have the same dimension")
+    let result = zip(a, b)
+        .map { $0 * $1 }
+        .reduce(0, +)
+
+    return result
+}
+
+/// Magnitude
+private func mag(_ vector: [Double]) -> Double {
+    // Magnitude of the vector is the square root of the dot product of the vector with itself.
+    return sqrt(dot(vector, vector))
+}
+public func cosineSimilarity(a: [Double], b: [Double]) -> Double
+{
+    return dot(a, b) / (mag(a) * mag(b))
+}
 class RecommendedTableViewController: UITableViewController
 {
     // Need the total wine data:
@@ -18,6 +46,19 @@ class RecommendedTableViewController: UITableViewController
         super.viewDidLoad()
         
         print(wineModel?.title)
+        
+        for i in 0...10
+        {
+            // For each word, get a word embedding
+            let word = wineModel?.description?[i]
+            
+        }
+        
+        // Get a sentence embedding for the wine review:
+        
+        
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
