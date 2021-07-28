@@ -36,6 +36,23 @@ public func cosineSimilarity(a: [Double], b: [Double]) -> Double
 {
     return dot(a, b) / (mag(a) * mag(b))
 }
+
+public func vector(for string: String) -> [Double]
+{
+    if #available(iOS 14.0, *)
+    {
+        guard let sentenceEmbedding = NLEmbedding.sentenceEmbedding(for: .english),
+              let vector = sentenceEmbedding.vector(for: string) else {
+            fatalError()
+        }
+        
+        return vector
+    } else {
+        // Fallback on earlier versions
+        return []
+    }
+    
+}
 class RecommendedTableViewController: UITableViewController
 {
     // Need the total wine data:
