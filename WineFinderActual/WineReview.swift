@@ -27,8 +27,13 @@ struct WineReview: Codable
     var country: String?
     var price: Int?
     var color: String?
+    
+    // Non-coding fields:
     var matchPoints = 0
     var matchedDescriptors: [String] = []
+    var embedding: [Double] = []
+    var cosineSimilarity = 0.0
+    
     var full_description: String?
 }
 

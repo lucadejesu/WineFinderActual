@@ -64,12 +64,41 @@ class RecommendedTableViewController: UITableViewController
         
         print(wineModel?.title)
         
-        for i in 0...10
+        // Sentence embedding: a way to numerically represent natural language, taking into consideration the semantics of a sentence (rather than just the word embedding)
+        // Get a sentence embedding for the unwanted wine:
+        let joined_description = (wineModel?.description)?.joined(separator: " ") ?? " "
+        let firstVec = vector(for: joined_description)
+        wineModel?.embedding = firstVec
+        
+        var counter = 0
+        
+        for wine in data
         {
-            // For each word, get a word embedding
-            let word = wineModel?.description?[i]
+            var currentWine = wine
+            let currentDescription = (wine.description)?.joined(separator: " ") ?? " "
+            let currentVector = vector(for: currentDescription)
+            let cosine_similarity = cosineSimilarity(a: firstVec, b: currentVector)
+            
+            currentWine.cosineSimilarity = cosine_similarity
+            
+            counter = counter + 1
+            
+            if counter == 10
+            {
+                break
+            }
             
         }
+        
+        
+        
+        
+        
+        
+        // current idea: get a sentence embedding for each wine review description,
+        // get the cosine similarity between the wine in question and all of the wines,
+        // return the top similar results
+        
         
         // Get a sentence embedding for the wine review:
         
@@ -95,15 +124,15 @@ class RecommendedTableViewController: UITableViewController
         return 0
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
-
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
