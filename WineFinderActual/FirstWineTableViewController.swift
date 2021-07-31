@@ -412,7 +412,7 @@ class FirstWineTableViewController: UITableViewController
         guard let nextPage = storyboard?.instantiateViewController(identifier: "recommendedTableView") as? RecommendedTableViewController else { return }
         
         // Pass over the wine data, we will use the full database to recommend new wines
-        nextPage.data = data
+        
         
         // Get the index path row for the specific button:
         var superView = sender.superview

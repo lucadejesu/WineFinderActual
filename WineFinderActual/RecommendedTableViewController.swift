@@ -10,6 +10,15 @@ import UIKit
 import NaturalLanguage
 import Foundation
 
+
+// Step 1: create a NLP-driven python program to find similarity between wines, based on
+// reviews
+// Step 2: Convert the NLP program into a CoreML model
+// Step 3: Use the coreML model for predictions
+
+
+
+
 // Current idea: build a kNN model in Keras, convert it to CoreML model,
 // use this CoreML model to recommend new wines.
 // Probably need a new set of wine reviews to recommend based on.
@@ -17,6 +26,8 @@ import Foundation
 // We can get word embeddings with this function.
 // We can then get word embeddings for each word within a wine review
 // then we have a vector of words and their embeddings
+
+/*
 private func dot(_ a: [Double], _ b: [Double]) -> Double
 {
     assert(a.count == b.count, "Vectors must have the same dimension")
@@ -53,19 +64,32 @@ public func vector(for string: String) -> [Double]
     }
     
 }
+ 
+ */
 class RecommendedTableViewController: UITableViewController
 {
     // Need the total wine data:
-    var data: [WineReview] = []
+    let data = ML_Loader().ml_Reviews
     var wineModel: WineReview?
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
         print(wineModel?.title)
+        print(data[1].title)
+        
+        
+        
+        // Get sentence embeddings for each piece of data in the mlreviews
+        
+        // Add these to a file
+        
+        // Save that file
+        
         
         // Sentence embedding: a way to numerically represent natural language, taking into consideration the semantics of a sentence (rather than just the word embedding)
         // Get a sentence embedding for the unwanted wine:
+        /*
         let joined_description = (wineModel?.description)?.joined(separator: " ") ?? " "
         let firstVec = vector(for: joined_description)
         wineModel?.embedding = firstVec
@@ -91,7 +115,7 @@ class RecommendedTableViewController: UITableViewController
         }
         
         
-        
+        */
         
         
         
