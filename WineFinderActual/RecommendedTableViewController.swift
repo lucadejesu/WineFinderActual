@@ -27,7 +27,7 @@ import Foundation
 // We can then get word embeddings for each word within a wine review
 // then we have a vector of words and their embeddings
 
-/*
+
 private func dot(_ a: [Double], _ b: [Double]) -> Double
 {
     assert(a.count == b.count, "Vectors must have the same dimension")
@@ -65,7 +65,7 @@ public func vector(for string: String) -> [Double]
     
 }
  
- */
+
 class RecommendedTableViewController: UITableViewController
 {
     // Need the total wine data:
@@ -80,6 +80,20 @@ class RecommendedTableViewController: UITableViewController
         
         
         
+        for wine in data
+        {
+            var currentWine = wine
+            let currentDescription = (wine.description)?.joined(separator: " ") ?? " "
+            let currentVector = vector(for: currentDescription)
+            //let cosine_similarity = cosineSimilarity(a: firstVec, b: currentVector)
+            
+            
+            
+            
+            
+        }
+        
+
         // Get sentence embeddings for each piece of data in the mlreviews
         
         // Add these to a file

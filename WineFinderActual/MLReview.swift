@@ -26,9 +26,9 @@ struct MLReview: Codable
     var country: String?
     var price: Int?
     var color: String?
-    
-    // Non-coding fields:
     var embedding: [Double] = []
+    // Non-coding fields:
+    
     var cosineSimilarity = 0.0
     
     var full_description: String?
