@@ -15,6 +15,7 @@
 		8165C67326ACDDA700A625CE /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8165C67226ACDDA700A625CE /* SearchTableViewController.swift */; };
 		816AF3DD266C38D300F61BD3 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816AF3DC266C38D300F61BD3 /* CollectionViewController.swift */; };
 		816AF3DF266C3ADC00F61BD3 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816AF3DE266C3ADC00F61BD3 /* CollectionViewCell.swift */; };
+		817CA7EC26B52A60007E70F3 /* vectorizedData.json in Resources */ = {isa = PBXBuildFile; fileRef = 817CA7EB26B52A60007E70F3 /* vectorizedData.json */; };
 		8196B57D26B4EB4F00EA3C19 /* MLReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8196B57C26B4EB4F00EA3C19 /* MLReview.swift */; };
 		8196B58226B4EB8E00EA3C19 /* ML_Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8196B58126B4EB8E00EA3C19 /* ML_Loader.swift */; };
 		8196B58726B4EBE000EA3C19 /* trainingData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8196B58626B4EBE000EA3C19 /* trainingData.json */; };
@@ -54,6 +55,7 @@
 		8165C67226ACDDA700A625CE /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		816AF3DC266C38D300F61BD3 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		816AF3DE266C3ADC00F61BD3 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		817CA7EB26B52A60007E70F3 /* vectorizedData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = vectorizedData.json; sourceTree = "<group>"; };
 		8196B57C26B4EB4F00EA3C19 /* MLReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLReview.swift; sourceTree = "<group>"; };
 		8196B58126B4EB8E00EA3C19 /* ML_Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ML_Loader.swift; sourceTree = "<group>"; };
 		8196B58626B4EBE000EA3C19 /* trainingData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = trainingData.json; path = ../../../Downloads/sentenceEmbedding/trainingData.json; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				81CDB31B26AF3C5500A4C79C /* RecommendedTableViewController.swift */,
 				8196B57C26B4EB4F00EA3C19 /* MLReview.swift */,
 				8196B58126B4EB8E00EA3C19 /* ML_Loader.swift */,
+				817CA7EB26B52A60007E70F3 /* vectorizedData.json */,
 			);
 			path = WineFinderActual;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				81CCCAF4266AF4B40069CF97 /* Assets.xcassets in Resources */,
 				81CCCAF2266AF4AF0069CF97 /* Main.storyboard in Resources */,
 				8196B58726B4EBE000EA3C19 /* trainingData.json in Resources */,
+				817CA7EC26B52A60007E70F3 /* vectorizedData.json in Resources */,
 				8128BE6426A7945F001AF28D /* NEWwineData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

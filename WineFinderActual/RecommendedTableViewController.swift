@@ -70,6 +70,8 @@ class RecommendedTableViewController: UITableViewController
 {
     // Need the total wine data:
     let data = ML_Loader().ml_Reviews
+    var savedData: [MLReview] = []
+    
     var wineModel: WineReview?
     override func viewDidLoad()
     {
@@ -87,11 +89,15 @@ class RecommendedTableViewController: UITableViewController
             let currentVector = vector(for: currentDescription)
             //let cosine_similarity = cosineSimilarity(a: firstVec, b: currentVector)
             
+            currentWine.embedding = currentVector
             
             
-            
+            savedData.append(currentWine)
             
         }
+        
+        
+        
         
 
         // Get sentence embeddings for each piece of data in the mlreviews
