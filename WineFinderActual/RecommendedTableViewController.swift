@@ -48,12 +48,12 @@ public func cosineSimilarity(a: [Double], b: [Double]) -> Double
     return dot(a, b) / (mag(a) * mag(b))
 }
 
-public func vector(for string: String) -> [Double]
+public func vector(for description: String) -> [Double]
 {
     if #available(iOS 14.0, *)
     {
         guard let sentenceEmbedding = NLEmbedding.sentenceEmbedding(for: .english),
-              let vector = sentenceEmbedding.vector(for: string) else {
+              let vector = sentenceEmbedding.vector(for: description) else {
             fatalError()
         }
         
@@ -66,86 +66,84 @@ public func vector(for string: String) -> [Double]
 }
  
 
+
+func getDocumentsDirectory() -> URL
+
+{
+
+    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+
+    return paths[0]
+
+}
+
 class RecommendedTableViewController: UITableViewController
 {
     // Need the total wine data:
-    let data = ML_Loader().ml_Reviews
-    var savedData: [MLReview] = []
+    var data = ML_Loader().ml_Reviews
+    
     
     var wineModel: WineReview?
+    var bestMatch: MLReview?
+    var max_similarity = 0.0
+    
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        print(wineModel?.title)
-        print(data[1].title)
-        
-        
-        
         for wine in data
         {
-            var currentWine = wine
-            let currentDescription = (wine.description)?.joined(separator: " ") ?? " "
-            let currentVector = vector(for: currentDescription)
-            //let cosine_similarity = cosineSimilarity(a: firstVec, b: currentVector)
+        
+            // Get the embedding for the unwanted wine:
+            let wineDescription = (wineModel?.description)?.joined(separator: " ") ?? " "
+            let wineVector = vector(for: wineDescription)
             
-            currentWine.embedding = currentVector
+            // Get the current wine embedding:
+            let current_vector = wine.embedding
             
             
-            savedData.append(currentWine)
             
-        }
-        
-        
-        
-        
-
-        // Get sentence embeddings for each piece of data in the mlreviews
-        
-        // Add these to a file
-        
-        // Save that file
-        
-        
-        // Sentence embedding: a way to numerically represent natural language, taking into consideration the semantics of a sentence (rather than just the word embedding)
-        // Get a sentence embedding for the unwanted wine:
-        /*
-        let joined_description = (wineModel?.description)?.joined(separator: " ") ?? " "
-        let firstVec = vector(for: joined_description)
-        wineModel?.embedding = firstVec
-        
-        var counter = 0
-        
-        for wine in data
-        {
-            var currentWine = wine
-            let currentDescription = (wine.description)?.joined(separator: " ") ?? " "
-            let currentVector = vector(for: currentDescription)
-            let cosine_similarity = cosineSimilarity(a: firstVec, b: currentVector)
-            
-            currentWine.cosineSimilarity = cosine_similarity
-            
-            counter = counter + 1
-            
-            if counter == 10
+            if(current_vector == [0.0])
             {
+                
+                continue
+            }
+            // Get the cosine similarity of the two vectors (how similar the descriptions are, according to NLP sentence embeddings):
+            let current_cosine_similarity = cosineSimilarity(a: wineVector, b: current_vector!)
+            
+            if(current_cosine_similarity > 1.0)
+            {
+                
+                continue
+            }
+            
+            if(current_cosine_similarity > 0.85)
+            {
+                bestMatch = wine
                 break
             }
             
+            
+            
+            if(current_cosine_similarity > max_similarity)
+            {
+                max_similarity = current_cosine_similarity
+                bestMatch = wine
+            }
+            
+            
         }
         
         
-        */
+        print("data size: ", data.count)
+        print(bestMatch?.title)
         
         
+        print(wineModel?.variety)
         
-        // current idea: get a sentence embedding for each wine review description,
-        // get the cosine similarity between the wine in question and all of the wines,
-        // return the top similar results
-        
-        
-        // Get a sentence embedding for the wine review:
-        
+        print(max_similarity)
         
         
         

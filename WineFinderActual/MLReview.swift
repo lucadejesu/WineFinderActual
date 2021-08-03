@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct MLReview: Codable
+struct MLReview: Codable, Equatable
 {
     // Fields:
     // “variety” “points” “winery” “title” “description” “country” “price”
     // types: ALL are Strings, except price, which is an int
     private enum CodingKeys : String, CodingKey
     {
-        case variety, points, winery, description, country, price, color, title, taster_name, full_description
+        case variety, points, winery, description, country, price, color, title, taster_name, full_description, embedding
     }
     var variety: String?
     var taster_name: String
@@ -26,10 +26,10 @@ struct MLReview: Codable
     var country: String?
     var price: Int?
     var color: String?
-    var embedding: [Double] = []
+    var embedding: [Double]?
     // Non-coding fields:
     
-    var cosineSimilarity = 0.0
+    var matched = false
     
     var full_description: String?
 }

@@ -22,7 +22,7 @@ public class ML_Loader
     
     func load()
     {
-        if let fileLocation = Bundle.main.url(forResource: "trainingData", withExtension: "json")
+        if let fileLocation = Bundle.main.url(forResource: "vectorizedData", withExtension: "json")
         {
             // do catch in case of an error
             do

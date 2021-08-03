@@ -1,0 +1,39 @@
+
+The following block explains the logic for getting the "vectorizedData" JSON file.
+I wanted to use the new Apple NLP package sentence embeddings for the machine learning portion of this app. That portion consists of text similairty analysis using the
+cosine similarity of two sentence vectors, to try and capture semantics better than word embeddings might have. However, computing all of the vectors at run time was very very slow. So, I wanted to encode them into a local file based on some new reviews before running. Now, this file has an extra encoding key - embedding, which is an array of doubles for each wine review, based on the wine review. Here is how it was done before saving to a local file:
+
+/        for wine in data
+//        {
+//            var currentWine = wine
+//            let currentDescription = (wine.description)?.joined(separator: " ") ?? " "
+//            let currentVector = vector(for: currentDescription)
+//            //let cosine_similarity = cosineSimilarity(a: firstVec, b: currentVector)
+//
+//            currentWine.embedding = currentVector
+//
+//
+//            savedData.append(currentWine)
+//
+//        }
+//
+//        // The data that was encoded (write it to the file)
+//
+//        do
+//        {
+//
+//            let data = try JSONEncoder().encode(savedData)
+//
+//
+//
+//        let filename = getDocumentsDirectory().appendingPathComponent("vectorizedData.json")
+//
+//
+//           try data.write(to: filename)
+//
+//
+//
+//        } catch { print("There was an error in write(to: ) method. ")}
+//
+//
+//        print(getDocumentsDirectory())
