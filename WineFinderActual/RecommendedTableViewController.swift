@@ -77,21 +77,55 @@ func getDocumentsDirectory() -> URL
 
 }
 
+// For customization on the cell:
+class RecommendedCell: UITableViewCell
+{
+    
+    @IBOutlet weak var WineName: UILabel!
+    @IBOutlet weak var Description: UILabel!
+    @IBOutlet weak var Score: UILabel!
+    @IBOutlet weak var FindAnother: UIButton!
+    @IBOutlet weak var Variety: UILabel!
+    
+    
+}
+
+
+
 class RecommendedTableViewController: UITableViewController
 {
     // Need the total wine data:
     var data = ML_Loader().ml_Reviews
     
-    
+    var startIndex = 0
+
     var wineModel: WineReview?
     var bestMatch: MLReview?
     var max_similarity = 0.0
     
+    // User pressed to look for another wine:
+    @IBAction func findAnotherTapped(_ sender: UIButton)
+    {
+        sender.backgroundColor = .darkGray
+        
+        guard let nextPage = storyboard?.instantiateViewController(identifier: "secondRecommendedView") as? SecondRecommendedTableViewController else { return }
+        
+        // Configure the data to pass to the next page here:
+        nextPage.startIndex = startIndex
+        nextPage.data = data
+        nextPage.wineModel = wineModel
+        
+        navigationController?.pushViewController(nextPage, animated: true)
+        
+        
+    }
     
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        var counter = 0
         
         for wine in data
         {
@@ -107,7 +141,7 @@ class RecommendedTableViewController: UITableViewController
             
             if(current_vector == [0.0])
             {
-                
+                counter = counter + 1
                 continue
             }
             // Get the cosine similarity of the two vectors (how similar the descriptions are, according to NLP sentence embeddings):
@@ -115,15 +149,16 @@ class RecommendedTableViewController: UITableViewController
             
             if(current_cosine_similarity > 1.0)
             {
-                
+                counter = counter + 1
                 continue
             }
             
-            if(current_cosine_similarity > 0.85)
-            {
-                bestMatch = wine
-                break
-            }
+//            if(current_cosine_similarity > 0.85)
+//            {
+//                max_similarity = current_cosine_similarity
+//                bestMatch = wine
+//                break
+//            }
             
             
             
@@ -133,16 +168,21 @@ class RecommendedTableViewController: UITableViewController
                 bestMatch = wine
             }
             
+            counter = counter + 1
+            if (counter == 300)
+            {
+                break
+            }
             
         }
         
-        
-        print("data size: ", data.count)
+        startIndex = counter
+        // print("data size: ", data.count)
         print(bestMatch?.title)
         
         
-        print(wineModel?.variety)
-        
+        print(bestMatch?.full_description)
+        print(bestMatch?.variety)
         print(max_similarity)
         
         
@@ -156,26 +196,54 @@ class RecommendedTableViewController: UITableViewController
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        // Only have one wine being returned:
+        return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        // Only have one wine being returned:
+        return 1
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recommendedCell", for: indexPath) as! RecommendedCell
+        
+        cell.WineName.text = bestMatch?.title
+        
+        // Get rid of newlines and set the text to hold the full description:
+        let stringDescRepresentation = bestMatch?.full_description
+        let trimmed = stringDescRepresentation?.trimmingCharacters(in: .whitespacesAndNewlines)
+        cell.Description.text = trimmed
+        
+        let stringCritic = "Score: \(bestMatch?.points ?? "unknown") (from \(bestMatch?.taster_name ?? "unknown") of www.winemag.com)"
+        cell.Score.text = stringCritic
+        
+        let stringVariety = "Variety: \(bestMatch?.variety ?? "Unknown")"
+        cell.Variety.text = stringVariety
+        
+        
+        cell.WineName.adjustsFontSizeToFitWidth = true
+        cell.Score.adjustsFontSizeToFitWidth = true
+        cell.Description.adjustsFontSizeToFitWidth = true
+        cell.Variety.adjustsFontSizeToFitWidth = true
 
-        // Configure the cell...
+        
+        cell.FindAnother.addTarget(self, action: #selector(findAnotherTapped), for: .touchUpInside)
+        // Rounded look for the button, matching previous button style
+        cell.FindAnother.layer.cornerRadius = 10
         
         return cell
     }
     
-
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 420
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
