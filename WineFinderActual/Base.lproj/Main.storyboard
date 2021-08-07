@@ -475,6 +475,9 @@
                                             <state key="normal" title="Return Home">
                                                 <color key="titleColor" red="0.59168555700000003" green="0.0" blue="0.0071517457219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </state>
+                                            <connections>
+                                                <action selector="ReturnHomeTapped:" destination="Qgv-RO-Pik" eventType="touchUpInside" id="Z4i-64-xGP"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>

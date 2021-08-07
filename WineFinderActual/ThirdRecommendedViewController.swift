@@ -26,6 +26,34 @@ class ThirdRecommendedViewController: UITableViewController
     var max_similarity = 0.0
     var bestMatch: MLReview?
     
+    @IBAction func ReturnHomeTapped(_ sender: UIButton)
+    {
+        sender.backgroundColor = .darkGray
+        
+        var vcArray = self.navigationController?.viewControllers
+        // Remove third recommended
+        vcArray!.removeLast()
+        //Remove second recommended
+        vcArray!.removeLast()
+        // Remove the first recommended
+        vcArray!.removeLast()
+        // Remove the first table view
+        vcArray!.removeLast()
+        // Remove the original homescreen
+        vcArray!.removeLast()
+        
+        // Add home back
+        guard let nextPage = storyboard?.instantiateViewController(identifier: "CollectionViewController") as? CollectionViewController else { return }
+        
+        // Append to the view controller array
+        vcArray!.append(nextPage)
+        
+        // Set the view controllers (effectively returning home)
+        self.navigationController?.setViewControllers(vcArray!, animated: false)
+    }
+    
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -124,7 +152,8 @@ class ThirdRecommendedViewController: UITableViewController
          cell.Description.adjustsFontSizeToFitWidth = true
          cell.Variety.adjustsFontSizeToFitWidth = true
          
-         
+        cell.ReturnHome.addTarget(self, action: #selector(ReturnHomeTapped), for: .touchUpInside)
+        cell.ReturnHome.layer.cornerRadius = 10
          
          return cell
      }
