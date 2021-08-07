@@ -11,6 +11,9 @@ import CoreData
 
 class CollectionViewController: UICollectionViewController
 {
+    
+    
+    
     let findButton = UIButton(frame: CGRect(x:104,y:53,width:206,height:93))
     // Act as switches when the descriptors are selected:
     var selected: [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
@@ -27,7 +30,7 @@ class CollectionViewController: UICollectionViewController
     // Anything else that needs to be reset upon popping can be done here.
     override func viewDidAppear(_ animated: Bool)
     {
-        
+        self.collectionView.isScrollEnabled = false
         selected = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
         chosen = []
         
@@ -46,6 +49,9 @@ class CollectionViewController: UICollectionViewController
         super.viewDidLoad()
         
     }
+    
+    
+    
     
     @IBAction func findButtonTapped(_ sender: UIButton) -> Void
     {
