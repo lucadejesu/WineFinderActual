@@ -120,6 +120,18 @@ class RecommendedTableViewController: UITableViewController
         
     }
     
+    // When view re-appears (on back):
+    override func viewDidAppear(_ animated: Bool)
+    {
+        for cell in tableView.visibleCells
+        {
+            // Change the cells button color
+            let currCell = cell as! RecommendedCell
+            currCell.FindAnother.backgroundColor = .systemGray2
+            
+        }
+    }
+    
     
     override func viewDidLoad()
     {
@@ -169,7 +181,7 @@ class RecommendedTableViewController: UITableViewController
             }
             
             counter = counter + 1
-            if (counter == 300)
+            if (counter == 100)
             {
                 break
             }

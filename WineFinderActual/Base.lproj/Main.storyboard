@@ -390,11 +390,24 @@
                                             <color key="textColor" red="0.20093488640000001" green="0.38961860640000001" blue="0.20646797389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAP-Ag-vP3">
+                                            <rect key="frame" x="125" y="307" width="164" height="64"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="17"/>
+                                            <state key="normal" title="Try Again">
+                                                <color key="titleColor" red="0.59168555700000003" green="0.0" blue="0.0071517457219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="TryAgainTapped:" destination="0AN-04-BVL" eventType="touchUpInside" id="CUm-Nv-6HT"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="Description" destination="FsC-Ma-xFH" id="s9S-2O-ZZ7"/>
                                     <outlet property="Score" destination="ot9-0k-X8h" id="ZxV-Y5-hSp"/>
+                                    <outlet property="TryAgain" destination="yAP-Ag-vP3" id="AYO-TI-C0p"/>
                                     <outlet property="Variety" destination="JPt-9j-zCJ" id="9VA-7M-saW"/>
                                     <outlet property="WineName" destination="iy4-Xm-HRP" id="C4j-jo-63c"/>
                                 </connections>
@@ -409,6 +422,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tm1-QH-4GU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4308.695652173913" y="-74.330357142857139"/>
+        </scene>
+        <!--Third Recommended View Controller-->
+        <scene sceneID="kGx-sC-zvk">
+            <objects>
+                <tableViewController storyboardIdentifier="thirdRecommendedView" id="Qgv-RO-Pik" customClass="ThirdRecommendedViewController" customModule="WineFinderActual" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZcK-j1-dX2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newestRecommendedCell" rowHeight="445" id="PiZ-p5-IDR" customClass="newestRecommendedCell" customModule="WineFinderActual" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="445"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PiZ-p5-IDR" id="7gb-GG-yyP">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="445"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wine Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXS-ya-Uke">
+                                            <rect key="frame" x="20" y="11" width="383" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WineType" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aY2-rj-oUG">
+                                            <rect key="frame" x="20" y="40" width="374" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9F-yU-Tps">
+                                            <rect key="frame" x="20" y="81" width="374" height="140"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="20"/>
+                                            <color key="textColor" red="0.59168555700000003" green="0.0" blue="0.0071517457219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ix9-CR-teb">
+                                            <rect key="frame" x="20" y="229" width="374" height="48"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="20"/>
+                                            <color key="textColor" red="0.20093488640000001" green="0.38961860640000001" blue="0.20646797389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="soZ-U9-qmy">
+                                            <rect key="frame" x="125" y="307" width="164" height="64"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="17"/>
+                                            <state key="normal" title="Return Home">
+                                                <color key="titleColor" red="0.59168555700000003" green="0.0" blue="0.0071517457219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="Description" destination="w9F-yU-Tps" id="ijj-xl-DiC"/>
+                                    <outlet property="ReturnHome" destination="soZ-U9-qmy" id="ZyO-gu-huv"/>
+                                    <outlet property="Score" destination="Ix9-CR-teb" id="7di-sb-PeX"/>
+                                    <outlet property="Variety" destination="aY2-rj-oUG" id="2Js-GF-p0Z"/>
+                                    <outlet property="WineName" destination="QXS-ya-Uke" id="c0s-Lz-IZm"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Qgv-RO-Pik" id="wF7-rF-Hr8"/>
+                            <outlet property="delegate" destination="Qgv-RO-Pik" id="72c-6s-nup"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ss-sX-w9v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5088.4057971014499" y="-74.330357142857139"/>
         </scene>
         <!--Navigation View Controller-->
         <scene sceneID="9tO-Tc-cUs">

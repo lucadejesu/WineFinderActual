@@ -1,5 +1,5 @@
 //
-//  SecondRecommendedTableViewController.swift
+//  ThirdRecommendedViewController.swift
 //  WineFinderActual
 //
 //  Created by luca on 8/6/21.
@@ -7,66 +7,29 @@
 //
 
 import UIKit
-import NaturalLanguage
-import Foundation
 
-class newRecommendedCell: UITableViewCell
+class newestRecommendedCell: UITableViewCell
 {
     @IBOutlet weak var WineName: UILabel!
     @IBOutlet weak var Variety: UILabel!
     @IBOutlet weak var Description: UILabel!
     @IBOutlet weak var Score: UILabel!
-    @IBOutlet weak var TryAgain: UIButton!
+    @IBOutlet weak var ReturnHome: UIButton!
     
 }
 
-
-class SecondRecommendedTableViewController: UITableViewController
+class ThirdRecommendedViewController: UITableViewController
 {
     var startIndex = 0
     var data: [MLReview] = []
     var wineModel: WineReview?
     var max_similarity = 0.0
     var bestMatch: MLReview?
-    var newStartIndex = 0
-    
-    
-    @IBAction func TryAgainTapped(_ sender: UIButton)
-    {
-        sender.backgroundColor = .darkGray
-        
-        guard let nextPage = storyboard?.instantiateViewController(identifier: "thirdRecommendedView") as? ThirdRecommendedViewController else { return }
-        
-        // Configure the data for the next page here:
-        nextPage.startIndex = newStartIndex
-        nextPage.data = data
-        nextPage.wineModel = wineModel
-        
-        navigationController?.pushViewController(nextPage, animated: true)
-        
-    }
-    
-    // When view re-appears (on back):
-    override func viewDidAppear(_ animated: Bool)
-    {
-        for cell in tableView.visibleCells
-        {
-            // Change the cells button color
-            let currCell = cell as! newRecommendedCell
-            currCell.TryAgain.backgroundColor = .systemGray2
-            
-        }
-    }
-    
     
     override func viewDidLoad()
     {
-        
-        
         super.viewDidLoad()
-
-        // Same process as before, only this time, go from previous
-        // last index to the next point (last index + 400)
+        
         var endIndex = startIndex + 99
         var counter = startIndex
         
@@ -109,14 +72,20 @@ class SecondRecommendedTableViewController: UITableViewController
             
         }
         
-        newStartIndex = counter
         
         
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
         
         return 1
     }
@@ -130,37 +99,35 @@ class SecondRecommendedTableViewController: UITableViewController
     {
         return 420
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "newRecommendedCell", for: indexPath) as! newRecommendedCell
+     {
+         let cell = tableView.dequeueReusableCell(withIdentifier: "newestRecommendedCell", for: indexPath) as! newestRecommendedCell
 
-        // Configure the cell
-        cell.WineName.text = bestMatch?.title
-        
-        // Get rid of newlines and set the text to hold the full description:
-        let stringDescRepresentation = bestMatch?.full_description
-        let trimmed = stringDescRepresentation?.trimmingCharacters(in: .whitespacesAndNewlines)
-        cell.Description.text = trimmed
-        
-        let stringCritic = "Score: \(bestMatch?.points ?? "unknown") (from \(bestMatch?.taster_name ?? "unknown") of www.winemag.com)"
-        cell.Score.text = stringCritic
-        
-        let stringVariety = "Variety: \(bestMatch?.variety ?? "Unknown")"
-        cell.Variety.text = stringVariety
-        
-        
-        cell.WineName.adjustsFontSizeToFitWidth = true
-        cell.Score.adjustsFontSizeToFitWidth = true
-        cell.Description.adjustsFontSizeToFitWidth = true
-        cell.Variety.adjustsFontSizeToFitWidth = true
-        
-        cell.TryAgain.addTarget(self, action: #selector(TryAgainTapped), for: .touchUpInside)
-        cell.TryAgain.layer.cornerRadius = 10
-        
-        return cell
-    }
+         // Configure the cell
+         cell.WineName.text = bestMatch?.title
+         
+         // Get rid of newlines and set the text to hold the full description:
+         let stringDescRepresentation = bestMatch?.full_description
+         let trimmed = stringDescRepresentation?.trimmingCharacters(in: .whitespacesAndNewlines)
+         cell.Description.text = trimmed
+         
+         let stringCritic = "Score: \(bestMatch?.points ?? "unknown") (from \(bestMatch?.taster_name ?? "unknown") of www.winemag.com)"
+         cell.Score.text = stringCritic
+         
+         let stringVariety = "Variety: \(bestMatch?.variety ?? "Unknown")"
+         cell.Variety.text = stringVariety
+         
+         
+         cell.WineName.adjustsFontSizeToFitWidth = true
+         cell.Score.adjustsFontSizeToFitWidth = true
+         cell.Description.adjustsFontSizeToFitWidth = true
+         cell.Variety.adjustsFontSizeToFitWidth = true
+         
+         
+         
+         return cell
+     }
     
 
     /*
