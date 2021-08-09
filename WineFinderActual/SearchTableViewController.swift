@@ -16,9 +16,17 @@ class searchTableCell: UITableViewCell
     
     @IBOutlet weak var wineTitle: UILabel!
     
+    @IBOutlet weak var WineType: UILabel!
+    
+    @IBOutlet weak var Price: UILabel!
+    
     @IBOutlet weak var score: UILabel!
     
+    
     @IBOutlet weak var descriptors: UILabel!
+    
+    
+    
     
 }
 class SearchTableViewController: UITableViewController, UISearchBarDelegate {
@@ -123,6 +131,23 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         cell.score.text = stringCritic
         cell.score.adjustsFontSizeToFitWidth = true
         
+        // Set the price:
+        let stringPrice = "$\(Int(filteredData[indexPath.row].price ?? 0))"
+        
+        
+        if Int(filteredData[indexPath.row].price ?? 0) == 0
+        {
+            cell.Price.text = "unknown price"
+        }
+        else
+        {
+            cell.Price.text = stringPrice
+        }
+        
+        cell.WineType.text = filteredData[indexPath.row].variety
+        
+        
+        
         return cell
         
         
@@ -131,7 +156,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     // Allows the changing of the cell heights, should be the same for each row/cell
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 280
+        return 313
     }
     
     // Mark :- configuring the search bar
