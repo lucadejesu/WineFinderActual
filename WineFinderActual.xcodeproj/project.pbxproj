@@ -17,8 +17,6 @@
 		8165C67326ACDDA700A625CE /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8165C67226ACDDA700A625CE /* SearchTableViewController.swift */; };
 		816AF3DD266C38D300F61BD3 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816AF3DC266C38D300F61BD3 /* CollectionViewController.swift */; };
 		816AF3DF266C3ADC00F61BD3 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816AF3DE266C3ADC00F61BD3 /* CollectionViewCell.swift */; };
-		8195339026BDE46B007EFFD5 /* SecondRecommendedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195338F26BDE46B007EFFD5 /* SecondRecommendedTableViewController.swift */; };
-		8195339826BE08D2007EFFD5 /* ThirdRecommendedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8195339726BE08D2007EFFD5 /* ThirdRecommendedViewController.swift */; };
 		8196B57D26B4EB4F00EA3C19 /* MLReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8196B57C26B4EB4F00EA3C19 /* MLReview.swift */; };
 		8196B58226B4EB8E00EA3C19 /* ML_Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8196B58126B4EB8E00EA3C19 /* ML_Loader.swift */; };
 		81CCCAEB266AF4AF0069CF97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CCCAEA266AF4AF0069CF97 /* AppDelegate.swift */; };
@@ -59,8 +57,6 @@
 		8165C67226ACDDA700A625CE /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		816AF3DC266C38D300F61BD3 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		816AF3DE266C3ADC00F61BD3 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		8195338F26BDE46B007EFFD5 /* SecondRecommendedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondRecommendedTableViewController.swift; sourceTree = "<group>"; };
-		8195339726BE08D2007EFFD5 /* ThirdRecommendedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdRecommendedViewController.swift; sourceTree = "<group>"; };
 		8196B57C26B4EB4F00EA3C19 /* MLReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLReview.swift; sourceTree = "<group>"; };
 		8196B58126B4EB8E00EA3C19 /* ML_Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ML_Loader.swift; sourceTree = "<group>"; };
 		81CCCAE7266AF4AF0069CF97 /* WineFinderActual.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WineFinderActual.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,8 +142,6 @@
 				8196B57C26B4EB4F00EA3C19 /* MLReview.swift */,
 				8196B58126B4EB8E00EA3C19 /* ML_Loader.swift */,
 				81213DBD26B87D540060C170 /* ml_read_me */,
-				8195338F26BDE46B007EFFD5 /* SecondRecommendedTableViewController.swift */,
-				8195339726BE08D2007EFFD5 /* ThirdRecommendedViewController.swift */,
 			);
 			path = WineFinderActual;
 			sourceTree = "<group>";
@@ -308,8 +302,6 @@
 				8165C67326ACDDA700A625CE /* SearchTableViewController.swift in Sources */,
 				816AF3DD266C38D300F61BD3 /* CollectionViewController.swift in Sources */,
 				81CDB31C26AF3C5500A4C79C /* RecommendedTableViewController.swift in Sources */,
-				8195339826BE08D2007EFFD5 /* ThirdRecommendedViewController.swift in Sources */,
-				8195339026BDE46B007EFFD5 /* SecondRecommendedTableViewController.swift in Sources */,
 				81CCCAEB266AF4AF0069CF97 /* AppDelegate.swift in Sources */,
 				8196B58226B4EB8E00EA3C19 /* ML_Loader.swift in Sources */,
 				815A835426783FCC003AD42E /* WineReview.swift in Sources */,

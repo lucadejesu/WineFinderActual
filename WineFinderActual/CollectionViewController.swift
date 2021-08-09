@@ -82,14 +82,14 @@ class CollectionViewController: UICollectionViewController
         // If the user picked attributes, continue
         if pickedCount != 0
         {
-        sender.backgroundColor = UIColor(red: 0.33, green: 0.00, blue: 0.00, alpha: 1.00)
+            sender.backgroundColor = UIColor(red: 0.33, green: 0.00, blue: 0.00, alpha: 1.00)
             
-        guard let nextPage = storyboard?.instantiateViewController(identifier: "firstWineTable") as? FirstWineTableViewController else { return }
+            guard let nextPage = storyboard?.instantiateViewController(identifier: "firstWineTable") as? FirstWineTableViewController else { return }
         
-        nextPage.chosenAttributes = chosen
+            nextPage.chosenAttributes = chosen
         
-        print(chosen)
-        navigationController?.pushViewController(nextPage, animated: true)
+            print(chosen)
+            navigationController?.pushViewController(nextPage, animated: true)
         }
         
         // If nothing is selected, display a UIAlert asking for descriptors to be selected

@@ -103,7 +103,8 @@ class RecommendedTableViewController: UITableViewController
     var data = ML_Loader().ml_Reviews
     var old_data = DataLoader().wineReviews
     var startIndex = 0
-
+    var endIndex = 100
+    
     var wineModel: WineReview?
     var bestMatch: MLReview?
     var max_similarity = 0.0
@@ -137,16 +138,35 @@ class RecommendedTableViewController: UITableViewController
     {
         sender.backgroundColor = .darkGray
         
+        // We can't search another 100 when we get to 1100, so don't allow the user to go further.
+        if(startIndex == 1100)
+        {
+            let end_alert = UIAlertController(title: "There are no more wines to recommend", message: "Press 'Okay' to dismiss", preferredStyle: .alert)
+            
+            end_alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+
+            self.present(end_alert, animated: true)
+            
+            sender.backgroundColor = .systemGray2
+        }
+        else
+        {
+            guard let nextPage = storyboard?.instantiateViewController(identifier: "recommendedTableView") as? RecommendedTableViewController else { return }
         
-        guard let nextPage = storyboard?.instantiateViewController(identifier: "secondRecommendedView") as? SecondRecommendedTableViewController else { return }
+            // Configure the data to pass to the next page here:
+            
+            // So we can search the next block of wines, set the newest pushed instance of the recommended indices (update them)
+            // This way, we run the same code over and over, only moving to another 100 wines each time, until all wines have been looked at (if the user wants to look through all).
+            nextPage.startIndex = startIndex
+            nextPage.endIndex = endIndex
+            nextPage.data = data
+            nextPage.wineModel = wineModel
         
-        // Configure the data to pass to the next page here:
-        nextPage.startIndex = startIndex
-        nextPage.data = data
-        nextPage.wineModel = wineModel
+            // Reset max_similarity on each load:
+            nextPage.max_similarity = 0.0
         
-        navigationController?.pushViewController(nextPage, animated: true)
-        
+            navigationController?.pushViewController(nextPage, animated: true)
+        }
         
     }
     
@@ -160,6 +180,7 @@ class RecommendedTableViewController: UITableViewController
             currCell.FindAnother.backgroundColor = .systemGray2
             
         }
+        
     }
     
     @objc func goBack()
@@ -198,9 +219,10 @@ class RecommendedTableViewController: UITableViewController
         super.viewDidLoad()
         
         
+        print(startIndex)
         configureBarItems()
         
-        var counter = 0
+        var counter = startIndex
         
         for wine in data
         {
@@ -210,7 +232,7 @@ class RecommendedTableViewController: UITableViewController
             let wineVector = vector(for: wineDescription)
             
             // Get the current wine embedding:
-            let current_vector = wine.embedding
+            let current_vector = data[counter].embedding
             
             
             
@@ -244,21 +266,17 @@ class RecommendedTableViewController: UITableViewController
             }
             
             counter = counter + 1
-            if (counter == 100)
+            if (counter == endIndex)
             {
+                //counter = counter + 1
                 break
             }
             
         }
         
         startIndex = counter
-        // print("data size: ", data.count)
-        print(bestMatch?.title)
+        endIndex = startIndex + 100
         
-        
-        print(bestMatch?.full_description)
-        print(bestMatch?.variety)
-        print(max_similarity)
         
         
         
