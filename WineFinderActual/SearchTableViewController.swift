@@ -7,6 +7,10 @@
 //
 
 import UIKit
+
+
+
+
 class searchTableCell: UITableViewCell
 {
     
@@ -26,6 +30,13 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     // Exists, but is not initialized
     var filteredData: [WineReview]!
     
+    // Adding in the next chunk of wines (used for the ML recommendations)
+    var ml_data = ML_Loader().ml_Reviews
+    
+    
+    
+    
+    
     // Important things in the search: fine the wine by name, like a wine lookup from one
     // that was found at the store
     // Identify the descriptors and the rating, if the wine is found.
@@ -33,8 +44,43 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     {
         super.viewDidLoad()
         
-        
+        var name_array: [String] = []
         searchBar.delegate = self
+        
+        // Convert the ML_review struct into WineReview stucts so we can
+        // add them to the data list.
+        for wine in ml_data
+        {
+            var current_wine = WineReview()
+            
+            // Dont append duplicate reviews
+            if(name_array.contains(wine.title ?? " "))
+            {
+                continue
+            }
+            // Initialize the current wine with every piece of data from the "ml" wine
+            current_wine.variety = wine.variety
+            current_wine.taster_name = wine.taster_name
+            current_wine.points = wine.points
+            current_wine.winery = wine.winery
+            current_wine.title = wine.title
+            // We are not going to use the trimmed descriptors, so just initialize
+            // full description
+            current_wine.full_description = wine.full_description
+            current_wine.country = wine.country
+            current_wine.price = wine.price
+            current_wine.color = wine.color
+            
+            
+            name_array.append(wine.title ?? " ")
+            
+            data.append(current_wine)
+            
+        }
+        
+        
+        
+        
         
         // Initialize the filtered data variable:
         filteredData = data

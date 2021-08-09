@@ -38,7 +38,7 @@ private func dot(_ a: [Double], _ b: [Double]) -> Double
     return result
 }
 
-/// Magnitude
+
 private func mag(_ vector: [Double]) -> Double {
     // Magnitude of the vector is the square root of the dot product of the vector with itself.
     return sqrt(dot(vector, vector))
@@ -58,8 +58,10 @@ public func vector(for description: String) -> [Double]
         }
         
         return vector
-    } else {
-        // Fallback on earlier versions
+    }
+    else
+    {
+        
         return []
     }
     
@@ -86,6 +88,9 @@ class RecommendedCell: UITableViewCell
     @IBOutlet weak var Score: UILabel!
     @IBOutlet weak var FindAnother: UIButton!
     @IBOutlet weak var Variety: UILabel!
+    @IBOutlet weak var ReturnHome: UIButton!
+    @IBOutlet weak var Price: UILabel!
+    @IBOutlet weak var CosineSimilarity: UILabel!
     
     
 }
@@ -96,17 +101,42 @@ class RecommendedTableViewController: UITableViewController
 {
     // Need the total wine data:
     var data = ML_Loader().ml_Reviews
-    
+    var old_data = DataLoader().wineReviews
     var startIndex = 0
 
     var wineModel: WineReview?
     var bestMatch: MLReview?
     var max_similarity = 0.0
     
+    // User pressed to go home:
+    
+    @IBAction func ReturnHomeTapped(_ sender: UIButton)
+    {
+        sender.backgroundColor = .darkGray
+        
+        var vcArray = self.navigationController?.viewControllers
+        
+        vcArray?.removeAll()
+        
+        // Add home back
+        guard let nextPage = storyboard?.instantiateViewController(identifier: "CollectionViewController") as? CollectionViewController else { return }
+        
+        // Append to the view controller array
+        vcArray!.append(nextPage)
+        
+        // Set the view controllers (effectively returning home)
+        self.navigationController?.setViewControllers(vcArray!, animated: false)
+        
+    }
+    
+    
+    
+    
     // User pressed to look for another wine:
     @IBAction func findAnotherTapped(_ sender: UIButton)
     {
         sender.backgroundColor = .darkGray
+        
         
         guard let nextPage = storyboard?.instantiateViewController(identifier: "secondRecommendedView") as? SecondRecommendedTableViewController else { return }
         
@@ -132,10 +162,43 @@ class RecommendedTableViewController: UITableViewController
         }
     }
     
+    @objc func goBack()
+    {
+        // It will go back to the "CollectionViewController" VC, and in that swift file, you can find the
+        // resetting of the view in "viewDidAppear"
+        // "viewDidAppear" happens whenever the view pops up, unlike "viewDidLoad"
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+    @objc func search()
+    {
+        // Instantiate the next view controller
+        guard let searchPage = storyboard?.instantiateViewController(identifier: "searchTable") as? SearchTableViewController else { return }
+        
+        searchPage.ml_data = data
+        searchPage.data = old_data
+        navigationController?.pushViewController(searchPage, animated: true)
+    }
+    
+    
+    // Function to assign actions and details for bar button
+    private func configureBarItems()
+    {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Go Back", style: .done, target: self, action: #selector(goBack))
+        navigationItem.leftBarButtonItem?.tintColor = .white
+        // Top right will allow for the user to search for a wine, to check if it is in the database
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search wines", style: .done, target: self, action: #selector(search))
+        navigationItem.rightBarButtonItem?.tintColor = .white
+    }
+    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        
+        configureBarItems()
         
         var counter = 0
         
@@ -238,23 +301,48 @@ class RecommendedTableViewController: UITableViewController
         let stringVariety = "Variety: \(bestMatch?.variety ?? "Unknown")"
         cell.Variety.text = stringVariety
         
+        // Set the price
+        let stringPrice = "$\(Int(bestMatch?.price ?? 0))"
+        
+        if Int(bestMatch?.price ?? 0) == 0
+        {
+            cell.Price.text = "unknown price"
+        }
+        else
+        {
+            cell.Price.text = stringPrice
+        }
+        
+        // Double(round(1000*x)/1000)
+        
+        // Set the cosine similarity:
+        let stringSimilarity = "Cosine similarity: \(Double(round(1000*max_similarity)/1000))"
+        cell.CosineSimilarity.text = stringSimilarity
         
         cell.WineName.adjustsFontSizeToFitWidth = true
         cell.Score.adjustsFontSizeToFitWidth = true
         cell.Description.adjustsFontSizeToFitWidth = true
         cell.Variety.adjustsFontSizeToFitWidth = true
-
+        cell.Price.adjustsFontSizeToFitWidth = true
+        
+        
+        
         
         cell.FindAnother.addTarget(self, action: #selector(findAnotherTapped), for: .touchUpInside)
         // Rounded look for the button, matching previous button style
         cell.FindAnother.layer.cornerRadius = 10
+        
+        // Add home target:
+        cell.ReturnHome.addTarget(self, action: #selector(ReturnHomeTapped), for: .touchUpInside)
+        cell.ReturnHome.layer.cornerRadius = 10
+        
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 420
+        return 613
     }
     /*
     // Override to support conditional editing of the table view.

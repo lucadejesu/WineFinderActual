@@ -408,40 +408,58 @@ class FirstWineTableViewController: UITableViewController
     {
         
         sender.backgroundColor = .darkGray
+        
+        // Execute the next block of code only if iOS 14 is available, because
+        // it will use NL sentence embeddings. If unavailable, the user cannot use
+        // this feature.
+        if #available(iOS 14.0, *)
+        {
+            guard let nextPage = storyboard?.instantiateViewController(identifier: "recommendedTableView") as? RecommendedTableViewController else { return }
+        
+            // Pass over the wine data, we will use the full database to recommend new wines
+        
+        
+            // Get the index path row for the specific button:
+            var superView = sender.superview
+            while let view = superView, !(view is UITableViewCell)
+            {
+                superView = view.superview
+            }
+        
+            guard let cell = superView as? UITableViewCell else
+            {
+                print("Button is not within a table view cell")
+                return
+            }
+        
+            guard let indexPath = tableView.indexPath(for: cell) else
+            {
+                print("Failed to get index path for the cell")
+                return
+            }
+        
+        
+        
+        
+            // Pass the specific wine that was clicked:
+        
+            nextPage.wineModel = foundWines[indexPath.row]
             
-        guard let nextPage = storyboard?.instantiateViewController(identifier: "recommendedTableView") as? RecommendedTableViewController else { return }
         
-        // Pass over the wine data, we will use the full database to recommend new wines
-        
-        
-        // Get the index path row for the specific button:
-        var superView = sender.superview
-        while let view = superView, !(view is UITableViewCell)
+            navigationController?.pushViewController(nextPage, animated: true)
+            
+        }
+        // Display a prompt that they need iOS 14.
+        else
         {
-            superView = view.superview
+            let version_alert = UIAlertController(title: "You need iOS 14 for this feature.", message: "You will be returned to the same page.", preferredStyle: .alert)
+            version_alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(version_alert, animated: true)
+            
+            sender.backgroundColor = .systemGray2
+            
         }
         
-        guard let cell = superView as? UITableViewCell else
-        {
-            print("Button is not within a table view cell")
-            return
-        }
-        
-        guard let indexPath = tableView.indexPath(for: cell) else
-        {
-            print("Failed to get index path for the cell")
-            return
-        }
-        
-        
-        
-        
-        // Pass the specific wine that was clicked:
-        
-        nextPage.wineModel = foundWines[indexPath.row]
-        
-        
-        navigationController?.pushViewController(nextPage, animated: true)
     }
     
     @objc func goBack()
@@ -507,22 +525,6 @@ class FirstWineTableViewController: UITableViewController
         
         // The navigation controller bar items are connected to this class.
         configureBarItems()
-        
-        print(foundWines[0].title ?? "null")
-        print(foundWines[0].description ?? "null")
-        print(foundWines[0].matchPoints)
-        print(foundWines[0].points)
-        print(foundWines[0].price)
-        print(foundWines[0].taster_name)
-        print("total wines", data.count)
-        //print(foundWines[500].matchPoints)
-       // print(foundWines[500].points)
-        print(foundWines.count, " found")
-        
-        // print(foundWines[300].title ?? "null")
-        // print(foundWines[300].description ?? "null")
-        // print(foundWines[300].matchPoints)
-        //print(data)
         
         
         // Uncomment the following line to preserve selection between presentations

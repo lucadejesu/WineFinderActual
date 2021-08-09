@@ -18,6 +18,28 @@ struct WineReview: Codable
     {
         case variety, points, winery, description, country, price, color, title, taster_name, full_description
     }
+    
+    
+    // So we can create empty instances of this struct:
+    init()
+    {
+        variety = " "
+        taster_name = " "
+        points = " "
+        winery = " "
+        title = " "
+        description = []
+        country = " "
+        price = 0
+        color = " "
+        matchPoints = 0
+        matchedDescriptors = []
+        embedding = []
+        cosineSimilarity = 0.0
+        full_description = " "
+    }
+    
+    
     var variety: String?
     var taster_name: String
     var points: String
