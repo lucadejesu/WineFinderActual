@@ -361,8 +361,15 @@
                                             <color key="textColor" red="0.078828209699999999" green="0.59845426629999998" blue="0.042393993239999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cosine Similarity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRd-aJ-eSx">
+                                            <rect key="frame" x="20" y="319" width="279" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="18"/>
+                                            <color key="textColor" systemColor="systemBlueColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTd-e8-0QA">
-                                            <rect key="frame" x="20" y="319" width="79" height="55"/>
+                                            <rect key="frame" x="220" y="308" width="79" height="55"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                             <state key="normal" title="􀯩 ">
@@ -372,13 +379,6 @@
                                                 <action selector="QuestionMarkTapped:" destination="xxm-uf-hPp" eventType="touchUpInside" id="5cj-lr-6E8"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cosine Similarity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRd-aJ-eSx">
-                                            <rect key="frame" x="88" y="330" width="279" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="18"/>
-                                            <color key="textColor" systemColor="systemBlueColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -415,7 +415,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdt-Td-gXq">
                                 <rect key="frame" x="20" y="249" width="374" height="655"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <mutableString key="text">Cosine similarity is a metric used to compare text similarity. The value ranges from 0 to 1.0, with a value closer to 1 representing "more similar". How this happens: the app uses Apple's "natural language" machine learning framework to produce vectors (lists of numbers) for each wine description. In short, these numbers represent words in the English language, and they are computed by mapping tokens to integer values, word embeddings are learned by ML algorithms in an unsupervised manner. Then, these are used in relation to each other semantically, in a "sentence embedding". The hope is that the sentence will do a better job with the context of the word, and the words will be mapped to other "similar words" in the dictionary of words. Ex: berry and blackberry are somewhat similar, whereas oak and blackberry are not. The reason it is called "cosine" similarity? Well, the vectors are mapped into a plane by the computer. The vectors with a smaller cosine angle will be closer in the space. The closer in the space they are, the more similar all of the numbers in the vector are. </mutableString>
+                                <mutableString key="text">Cosine similarity is a metric used to compare text similarity. The value ranges from 0 to 1.0, with a value closer to 1 representing "more similar". How this happens: the app uses Apple's "natural language" machine learning framework to produce vectors (lists of numbers) for each wine description. In short, these numbers represent words in the English language, and they are computed by mapping tokens to integer values, word embeddings are learned by ML algorithms in an unsupervised manner. Then, these are used in relation to each other semantically, in a "sentence embedding". The hope is that the sentence will do a better job with the context of the word, and the words will be mapped to other "similar words" in the dictionary of words. Ex: berry and blackberry are somewhat similar, whereas oak and blackberry are not. The reason it is called "cosine" similarity? Well, the vectors are mapped into a plane by the computer. The vectors with a smaller cosine of the angle will be closer in the space. The closer in the space they are, the more similar all of the numbers in the vector are. </mutableString>
                                 <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
