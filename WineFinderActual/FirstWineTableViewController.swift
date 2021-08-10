@@ -24,6 +24,9 @@ class WineTableViewCell: UITableViewCell
     @IBOutlet weak var Price: UILabel!
     @IBOutlet weak var FindSimilar: UIButton!
     @IBOutlet weak var CriticScore: UILabel!
+    @IBOutlet weak var ViewFullReview: UIButton!
+    
+    
 }
 
 
@@ -402,6 +405,52 @@ class FirstWineTableViewController: UITableViewController
     let data = DataLoader().wineReviews
     var foundWines: [WineReview] = []
     
+    
+    // When the user would like to read the wine's full review:
+    
+    
+    @IBAction func fullReviewTapped(_ sender: UIButton)
+    {
+        sender.backgroundColor = .darkGray
+        
+        // Get the index path row for the specific button:
+        var superView = sender.superview
+        while let view = superView, !(view is UITableViewCell)
+        {
+            superView = view.superview
+        }
+    
+        guard let cell = superView as? UITableViewCell else
+        {
+            print("Button is not within a table view cell")
+            return
+        }
+    
+        guard let indexPath = tableView.indexPath(for: cell) else
+        {
+            print("Failed to get index path for the cell")
+            return
+        }
+        
+        // Get rid of newlines and set the text to hold the full description:
+        let stringDescRepresentation = foundWines[indexPath.row].full_description
+        let trimmed = stringDescRepresentation?.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        
+        
+        let description_alert = UIAlertController(title: foundWines[indexPath.row].title, message: trimmed , preferredStyle: .actionSheet)
+        
+        
+        
+        description_alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+        self.present(description_alert, animated: true)
+        
+        sender.backgroundColor = .systemGray2
+        
+    }
+    
+    
+    
     // We transition to the next page, but each transition is different: a different
     // wine sends this page as the next one each time
     @IBAction func findSimilarTapped(_ sender: UIButton)
@@ -614,6 +663,10 @@ class FirstWineTableViewController: UITableViewController
         // Rounded look for the button, matching previous button style
         cell.FindSimilar.layer.cornerRadius = 10
         
+        // Add a target for the full review button:
+        cell.ViewFullReview.addTarget(self, action: #selector(fullReviewTapped), for: .touchUpInside)
+        cell.ViewFullReview.layer.cornerRadius = 10
+        
         
         return cell
     }
@@ -622,7 +675,8 @@ class FirstWineTableViewController: UITableViewController
     // Allows the changing of the cell heights, should be the same for each row/cell
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 280
+        return 373
+        
     }
     
     

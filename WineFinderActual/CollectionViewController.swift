@@ -20,7 +20,7 @@ class CollectionViewController: UICollectionViewController
     
     // List of top wine descriptors used in reviews
     // From the top 60 words in the reviews, in order of flavor, texture, body
-    let dataSource: [String] = ["fruit", "cherry", "spice", "rich", "oak", "lemon", "savory", "apple", "pepper", "raspberry", "herb", "plum", "strawberry", "citrus", "peach", "berry", "tangy","blackberry", "light", "dark", "full", "red",
+    let dataSource: [String] = ["fruit", "cherry", "spice", "rich", "oak", "lemon", "savory", "apple", "pepper", "raspberry", "herb", "plum", "strawberry", "citrus", "peach", "berry", "tangy","crisp", "blackberry", "light", "dark", "full", "red",
     "white", "10-20 dollars","20-35 dollars", ">= 35 dollars"]
     
     // This will be an array of actual chosen descriptors clicked on:
@@ -30,8 +30,8 @@ class CollectionViewController: UICollectionViewController
     // Anything else that needs to be reset upon popping can be done here.
     override func viewDidAppear(_ animated: Bool)
     {
-        self.collectionView.isScrollEnabled = false
-        selected = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+        // self.collectionView.isScrollEnabled = false
+        selected = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
         chosen = []
         
         //  Reset all of the cells to the original gray color:
