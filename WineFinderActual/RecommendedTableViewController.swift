@@ -92,13 +92,96 @@ class RecommendedCell: UITableViewCell
     @IBOutlet weak var Price: UILabel!
     @IBOutlet weak var CosineSimilarity: UILabel!
     
+    @IBOutlet weak var QuestionMark: UIButton!
     
+    
+    
+    
+}
+// Custom button
+class QuestionButton: UIButton
+{
+    private let title_label: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private let icon_view: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private var viewModel: QuestionButtonViewModel?
+    
+    override init(frame: CGRect)
+    {
+        self.viewModel = nil
+        super.init(frame: frame)
+    }
+    
+    init(with viewModel: QuestionButtonViewModel)
+    {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
+        
+        addSubviews()
+        
+        configure(with: viewModel)
+        
+    }
+    
+    private func addSubviews()
+    {
+        guard !title_label.isDescendant(of: self) else { return }
+        addSubview(title_label)
+        addSubview(icon_view)
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // Allows us to configure a button after it has already been created:
+    public func configure(with viewModel: QuestionButtonViewModel)
+    {
+        addSubviews()
+        
+        title_label.text = viewModel.title
+        icon_view.image = UIImage(systemName: viewModel.imageName)
+    }
+    
+    override func layoutSubviews()
+    {
+        super.layoutSubviews()
+        icon_view.frame = CGRect(x: 5, y: 5, width: 50, height: frame.height).integral
+        
+        title_label.frame = CGRect(x: 60, y: 5, width: frame.width-65, height: (frame.height-10)/2).integral
+        
+    }
+    
+    
+}
+struct QuestionButtonViewModel
+{
+    let title: String
+    let imageName: String
 }
 
 
 
 class RecommendedTableViewController: UITableViewController
 {
+    private let qButton: QuestionButton =
+    {
+        let button = QuestionButton(frame: CGRect(x: 0, y: 0, width: 200, height: 60))
+        return button
+    }()
+    
+    
     // Need the total wine data:
     var data = ML_Loader().ml_Reviews
     var old_data = DataLoader().wineReviews
@@ -170,6 +253,18 @@ class RecommendedTableViewController: UITableViewController
         
     }
     
+    @IBAction func QuestionMarkTapped(_ sender: UIButton)
+    {
+        guard let questionPage = storyboard?.instantiateViewController(identifier: "questionPage") else { return }
+        
+        
+        navigationController?.pushViewController(questionPage, animated: true)
+    }
+    
+    
+    
+    
+    
     // When view re-appears (on back):
     override func viewDidAppear(_ animated: Bool)
     {
@@ -217,6 +312,10 @@ class RecommendedTableViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        // Question button
+        
+        
         
         
         print(startIndex)
@@ -360,7 +459,8 @@ class RecommendedTableViewController: UITableViewController
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 613
+        return 575
+        
     }
     /*
     // Override to support conditional editing of the table view.
