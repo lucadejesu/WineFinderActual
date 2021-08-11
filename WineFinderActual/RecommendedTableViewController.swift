@@ -10,24 +10,13 @@ import UIKit
 import NaturalLanguage
 import Foundation
 
-
+// For a future prediction model:
 // Step 1: create a NLP-driven python program to find similarity between wines, based on
 // reviews
 // Step 2: Convert the NLP program into a CoreML model
 // Step 3: Use the coreML model for predictions
 
-
-
-
-// Current idea: build a kNN model in Keras, convert it to CoreML model,
-// use this CoreML model to recommend new wines.
-// Probably need a new set of wine reviews to recommend based on.
-
-// We can get word embeddings with this function.
-// We can then get word embeddings for each word within a wine review
-// then we have a vector of words and their embeddings
-
-
+// Dot product of two vectors, helper function for the magnitude function:
 private func dot(_ a: [Double], _ b: [Double]) -> Double
 {
     assert(a.count == b.count, "Vectors must have the same dimension")
@@ -38,16 +27,18 @@ private func dot(_ a: [Double], _ b: [Double]) -> Double
     return result
 }
 
-
-private func mag(_ vector: [Double]) -> Double {
-    // Magnitude of the vector is the square root of the dot product of the vector with itself.
+// Magnitude of the vector is the square root of the dot product of the vector with itself.
+private func mag(_ vector: [Double]) -> Double
+{
     return sqrt(dot(vector, vector))
 }
+// Formula for cosine similarity of two vectors:
 public func cosineSimilarity(a: [Double], b: [Double]) -> Double
 {
     return dot(a, b) / (mag(a) * mag(b))
 }
 
+// Vector returns a NL embedding  sentence embedding in the english language:
 public func vector(for description: String) -> [Double]
 {
     if #available(iOS 14.0, *)
@@ -68,16 +59,15 @@ public func vector(for description: String) -> [Double]
 }
  
 
-
-func getDocumentsDirectory() -> URL
-
-{
-
-    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-
-    return paths[0]
-
-}
+// This code is a helper function that can find the documents directory for the app, if something needs to be written to the app documents (its a hard to find location)
+// It was used earlier, for computing embeddings for the wines):
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//func getDocumentsDirectory() -> URL
+//{
+//    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+//
+//    return paths[0]
+//}
 
 // For customization on the cell:
 class RecommendedCell: UITableViewCell
@@ -91,14 +81,13 @@ class RecommendedCell: UITableViewCell
     @IBOutlet weak var ReturnHome: UIButton!
     @IBOutlet weak var Price: UILabel!
     @IBOutlet weak var CosineSimilarity: UILabel!
-    
     @IBOutlet weak var QuestionMark: UIButton!
     
     
     
     
 }
-// Custom button
+// Custom button class (not implemented in version 1.0 but could be in future updates):
 class QuestionButton: UIButton
 {
     private let title_label: UILabel = {
@@ -175,12 +164,14 @@ struct QuestionButtonViewModel
 
 class RecommendedTableViewController: UITableViewController
 {
-    private let qButton: QuestionButton =
-    {
-        let button = QuestionButton(frame: CGRect(x: 0, y: 0, width: 200, height: 60))
-        return button
-    }()
     
+// The following code is if a custom button is to be added in the future:
+//    private let qButton: QuestionButton =
+//    {
+//        let button = QuestionButton(frame: CGRect(x: 0, y: 0, width: 200, height: 60))
+//        return button
+//    }()
+//
     
     // Need the total wine data:
     var data = ML_Loader().ml_Reviews
@@ -254,9 +245,6 @@ class RecommendedTableViewController: UITableViewController
     }
     
     
-//    Cosine similarity is a metric used to compare text similarity. The value ranges from 0 to 1.0, with a value closer to 1 representing "more similar".
-    
-    
     @IBAction func QuestionMarkTapped(_ sender: UIButton)
     {
         let question_alert = UIAlertController(title: "Cosine Similarity?", message: "Cosine similarity is a metric used to compare text similarity. The value ranges from 0 to 1.0, with a value closer to 1 representing \'more similar.\' ", preferredStyle: .alert)
@@ -318,11 +306,7 @@ class RecommendedTableViewController: UITableViewController
     {
         super.viewDidLoad()
         
-        // Question button
-        
-        
-        
-        
+       
         print(startIndex)
         configureBarItems()
         
@@ -354,14 +338,6 @@ class RecommendedTableViewController: UITableViewController
                 continue
             }
             
-//            if(current_cosine_similarity > 0.85)
-//            {
-//                max_similarity = current_cosine_similarity
-//                bestMatch = wine
-//                break
-//            }
-            
-            
             
             if(current_cosine_similarity > max_similarity)
             {
@@ -381,17 +357,7 @@ class RecommendedTableViewController: UITableViewController
         startIndex = counter
         endIndex = startIndex + 100
         
-        
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int
     {
@@ -462,54 +428,11 @@ class RecommendedTableViewController: UITableViewController
         return cell
     }
     
+    // This number was selected from the height of the cell in recommended table view controller (size inspector):
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 575
         
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

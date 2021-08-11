@@ -13,25 +13,12 @@ import UIKit
 class NavigationViewController: UINavigationController
 {
 
-  
+    // There is no code here as nothing needed to be added, but in case of future changes ive kept the class as its connected to the navigation controller in storyboard.
     
     override func viewDidLoad()
     {
-        // Need to find out how to connect the back button to resetting the view
         
-        
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

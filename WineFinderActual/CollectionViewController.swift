@@ -56,7 +56,6 @@ class CollectionViewController: UICollectionViewController
     @IBAction func findButtonTapped(_ sender: UIButton) -> Void
     {
         
-        
         // Collect all of the selected words at this point, to be passed to the next view.
         var count = 0
         // Used to check if anything was selected
@@ -77,7 +76,6 @@ class CollectionViewController: UICollectionViewController
         
         // Use guard to check if we can instantiate, if we can't, then return
         // nextPage is a child view controller, and this is a modal transition
-        
         
         // If the user picked attributes, continue
         if pickedCount != 0
@@ -105,7 +103,6 @@ class CollectionViewController: UICollectionViewController
         
         
     }
-    
     
     
     // Returns the amount of descriptors in a section of a collection view
@@ -192,11 +189,9 @@ class CollectionViewController: UICollectionViewController
     
     // Make sure that we implement cell selection (when you click a label, what happens next?)
     
-    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        // IndexPath row is numbered 0-26 (or 0-(# of attributes - 1))
-        
+        // IndexPath row is numbered 0-27 (or 0-(# of attributes - 1))
         
         if let cell = collectionView.cellForItem(at:indexPath) as? CollectionViewCell
         {

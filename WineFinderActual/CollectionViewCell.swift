@@ -14,9 +14,6 @@ import CoreData
 class CollectionViewCell: UICollectionViewCell
 {
     
-    
-    
-    
     @IBOutlet weak var topLabel: UILabel!
     
     
@@ -29,7 +26,7 @@ class CollectionViewCell: UICollectionViewCell
         descriptorLabel.text = descriptor
         descriptorLabel.adjustsFontSizeToFitWidth = true
         
-        // CUSTOMIZE THE DESCRIPTOR BUTTONS
+        // CUSTOMIZE THE DESCRIPTOR BUTTONS here.
         
     }
     
