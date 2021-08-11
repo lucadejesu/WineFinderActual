@@ -184,6 +184,7 @@ class CollectionViewController: UICollectionViewController
         {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath)
             // Customize headerView here
+            
             return headerView
         }
         fatalError()

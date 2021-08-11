@@ -253,12 +253,17 @@ class RecommendedTableViewController: UITableViewController
         
     }
     
+    
+//    Cosine similarity is a metric used to compare text similarity. The value ranges from 0 to 1.0, with a value closer to 1 representing "more similar".
+    
+    
     @IBAction func QuestionMarkTapped(_ sender: UIButton)
     {
-        guard let questionPage = storyboard?.instantiateViewController(identifier: "questionPage") else { return }
+        let question_alert = UIAlertController(title: "Cosine Similarity?", message: "Cosine similarity is a metric used to compare text similarity. The value ranges from 0 to 1.0, with a value closer to 1 representing \'more similar.\' ", preferredStyle: .alert)
         
-        
-        navigationController?.pushViewController(questionPage, animated: true)
+        question_alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+
+        self.present(question_alert, animated: true)
     }
     
     

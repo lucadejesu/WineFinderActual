@@ -217,28 +217,19 @@ func checkForRange(attributes: [String]) -> ClosedRange<Int>
             }
         }
     }
-    
-    
-    for attribute in attributes
+    // If 1 range is selected, just return it:
+    else if rangeArray.count == 1
     {
-        
-        if attribute == "10-20 dollars"
-        {
-            return tenToTwenty
-        }
-        else if attribute == "20-35 dollars"
-        {
-            return twentyToThirtyFive
-        }
-        else if attribute == ">= 35 dollars"
-        {
-            return thirtyFivePlus
-        }
+        return rangeArray[0]
+    }
     
+    // 0 are selected (range not specified)
+    else
+    {
+        return 0...1
     }
     
     return 0...1
-    
 }
 
 
@@ -673,6 +664,7 @@ class FirstWineTableViewController: UITableViewController
     
     
     // Allows the changing of the cell heights, should be the same for each row/cell
+    // Look at the cell dimension in the size inspector to get the right number
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 373

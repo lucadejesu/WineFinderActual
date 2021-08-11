@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -64,7 +63,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Describe the wine you want." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhr-FC-fvJ">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Describe the wine you want." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fhr-FC-fvJ">
                                     <rect key="frame" x="100" y="50" width="223" height="24"/>
                                     <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,17 +76,17 @@
                                 <constraint firstAttribute="trailingMargin" secondItem="Fhr-FC-fvJ" secondAttribute="trailing" constant="83" id="8SH-T5-Rb8"/>
                                 <constraint firstItem="Fhr-FC-fvJ" firstAttribute="top" secondItem="mbA-Vg-lB9" secondAttribute="topMargin" constant="42" id="9DM-C6-Qn8"/>
                                 <constraint firstAttribute="bottomMargin" secondItem="Fhr-FC-fvJ" secondAttribute="bottom" constant="38" id="DUo-Wj-wtF"/>
-                                <constraint firstItem="Fhr-FC-fvJ" firstAttribute="leading" secondItem="mbA-Vg-lB9" secondAttribute="leadingMargin" constant="92" id="F7e-6h-mjX"/>
+                                <constraint firstItem="Fhr-FC-fvJ" firstAttribute="left" secondItem="mbA-Vg-lB9" secondAttribute="leftMargin" constant="92" id="F7e-6h-mjX"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="Fhr-FC-fvJ" secondAttribute="trailing" constant="83" id="QJg-yX-qaJ"/>
                                 <constraint firstAttribute="bottomMargin" secondItem="Fhr-FC-fvJ" secondAttribute="bottom" constant="38" id="auz-23-CLN"/>
-                                <constraint firstItem="Fhr-FC-fvJ" firstAttribute="leading" secondItem="mbA-Vg-lB9" secondAttribute="leadingMargin" constant="92" id="biU-6b-fEq"/>
-                                <constraint firstItem="Fhr-FC-fvJ" firstAttribute="leading" secondItem="mbA-Vg-lB9" secondAttribute="leadingMargin" constant="92" id="eKb-Wd-GBy"/>
+                                <constraint firstItem="Fhr-FC-fvJ" firstAttribute="left" secondItem="mbA-Vg-lB9" secondAttribute="leftMargin" constant="92" id="biU-6b-fEq"/>
+                                <constraint firstItem="Fhr-FC-fvJ" firstAttribute="left" secondItem="mbA-Vg-lB9" secondAttribute="leftMargin" constant="92" id="eKb-Wd-GBy"/>
                                 <constraint firstItem="Fhr-FC-fvJ" firstAttribute="top" secondItem="mbA-Vg-lB9" secondAttribute="topMargin" constant="42" id="jAP-om-fzB"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="Fhr-FC-fvJ" secondAttribute="trailing" constant="83" id="jTq-qT-IfR"/>
                                 <constraint firstItem="Fhr-FC-fvJ" firstAttribute="top" secondItem="mbA-Vg-lB9" secondAttribute="topMargin" constant="42" id="lUF-WO-lpO"/>
                                 <constraint firstAttribute="bottomMargin" secondItem="Fhr-FC-fvJ" secondAttribute="bottom" constant="38" id="r7e-tb-Xkc"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="Fhr-FC-fvJ" secondAttribute="trailing" constant="83" id="vcd-PF-uHK"/>
-                                <constraint firstItem="Fhr-FC-fvJ" firstAttribute="leading" secondItem="mbA-Vg-lB9" secondAttribute="leadingMargin" constant="92" id="wlx-81-t6Y"/>
+                                <constraint firstItem="Fhr-FC-fvJ" firstAttribute="left" secondItem="mbA-Vg-lB9" secondAttribute="leftMargin" constant="92" id="wlx-81-t6Y"/>
                                 <constraint firstItem="Fhr-FC-fvJ" firstAttribute="top" secondItem="mbA-Vg-lB9" secondAttribute="topMargin" constant="42" id="x7B-Dc-nFj"/>
                             </constraints>
                             <connections>
@@ -126,54 +125,50 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="373"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wine name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0VB-uI-bj6">
-                                            <rect key="frame" x="20" y="11" width="383" height="37"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="22"/>
-                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Matching words:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ju-yl-gOo">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matching words:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ju-yl-gOo">
                                             <rect key="frame" x="20" y="81" width="176" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="26" id="ayU-H4-2S2"/>
+                                                <constraint firstAttribute="width" constant="176" id="yFc-3V-WLG"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="words" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmd-mj-dxE">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="words" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmd-mj-dxE">
                                             <rect key="frame" x="20" y="103" width="374" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Light" family="Kohinoor Telugu" pointSize="18"/>
                                             <color key="textColor" red="0.59168555700000003" green="0.0" blue="0.0071517457219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyB-nm-OSn">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyB-nm-OSn">
                                             <rect key="frame" x="20" y="144" width="269" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="18"/>
                                             <color key="textColor" red="0.078828209699069826" green="0.5984542663327328" blue="0.042393993242875648" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wine Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gve-Zc-ZTM">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wine Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gve-Zc-ZTM">
                                             <rect key="frame" x="20" y="40" width="374" height="33"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Critic Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sut-y4-NaO">
-                                            <rect key="frame" x="20" y="166" width="383" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Critic Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sut-y4-NaO">
+                                            <rect key="frame" x="20" y="167" width="374" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="SQs-tb-cJc"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="17"/>
                                             <color key="textColor" red="0.20093488640922572" green="0.38961860643425572" blue="0.20646797387109961" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXK-kP-awj">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXK-kP-awj">
                                             <rect key="frame" x="125" y="197" width="164" height="64"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="164" id="7YQ-te-oKg"/>
+                                                <constraint firstAttribute="height" constant="64" id="m4S-vr-MAz"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="17"/>
                                             <state key="normal" title="Find similar">
                                                 <color key="titleColor" red="0.59168555700000003" green="0.0" blue="0.0071517457219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -182,9 +177,8 @@
                                                 <action selector="findSimilarTapped:" destination="e21-4e-W5h" eventType="touchUpInside" id="yIc-AB-m76"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBK-7a-xfL">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBK-7a-xfL">
                                             <rect key="frame" x="125" y="287" width="164" height="64"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="17"/>
                                             <state key="normal" title="View Full Review">
@@ -194,8 +188,43 @@
                                                 <action selector="fullReviewTapped:" destination="e21-4e-W5h" eventType="touchUpInside" id="Ly0-sI-LNb"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wine name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0VB-uI-bj6">
+                                            <rect key="frame" x="20" y="11" width="374" height="37"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="22"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="wXK-kP-awj" firstAttribute="centerX" secondItem="tmd-mj-dxE" secondAttribute="centerX" id="0nS-Ay-Kdu"/>
+                                        <constraint firstItem="0Ju-yl-gOo" firstAttribute="leading" secondItem="tmd-mj-dxE" secondAttribute="leading" id="3EC-bp-c8V"/>
+                                        <constraint firstItem="wXK-kP-awj" firstAttribute="trailing" secondItem="uyB-nm-OSn" secondAttribute="trailing" id="3Nu-d7-vxg"/>
+                                        <constraint firstItem="0VB-uI-bj6" firstAttribute="top" secondItem="pdK-lY-8tb" secondAttribute="topMargin" id="4Pe-So-Daf"/>
+                                        <constraint firstItem="wXK-kP-awj" firstAttribute="centerX" secondItem="0VB-uI-bj6" secondAttribute="centerX" id="8s1-5m-NzO"/>
+                                        <constraint firstItem="wXK-kP-awj" firstAttribute="centerX" secondItem="pdK-lY-8tb" secondAttribute="centerX" id="HGU-1s-mJg"/>
+                                        <constraint firstItem="uyB-nm-OSn" firstAttribute="leading" secondItem="Sut-y4-NaO" secondAttribute="leading" id="HUi-js-hjy"/>
+                                        <constraint firstItem="Gve-Zc-ZTM" firstAttribute="top" secondItem="pdK-lY-8tb" secondAttribute="topMargin" constant="29" id="OCa-Mb-uQu"/>
+                                        <constraint firstItem="0Ju-yl-gOo" firstAttribute="top" secondItem="Gve-Zc-ZTM" secondAttribute="bottom" constant="8" id="Qga-Kk-QEZ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="TBK-7a-xfL" secondAttribute="bottom" constant="11" id="YWl-4s-o7U"/>
+                                        <constraint firstItem="wXK-kP-awj" firstAttribute="trailing" secondItem="TBK-7a-xfL" secondAttribute="trailing" id="aTp-8q-Hiw"/>
+                                        <constraint firstAttribute="bottom" secondItem="wXK-kP-awj" secondAttribute="bottom" constant="112" id="b69-V8-9Ek"/>
+                                        <constraint firstItem="0VB-uI-bj6" firstAttribute="leading" secondItem="Gve-Zc-ZTM" secondAttribute="leading" id="buG-Ef-phy"/>
+                                        <constraint firstItem="wXK-kP-awj" firstAttribute="top" secondItem="Sut-y4-NaO" secondAttribute="bottom" constant="9" id="c6a-qu-r9M"/>
+                                        <constraint firstItem="uyB-nm-OSn" firstAttribute="top" secondItem="tmd-mj-dxE" secondAttribute="bottom" constant="15" id="eYi-Wq-vFZ"/>
+                                        <constraint firstItem="uyB-nm-OSn" firstAttribute="top" secondItem="0Ju-yl-gOo" secondAttribute="bottom" constant="37" id="fAK-S1-Cw3"/>
+                                        <constraint firstItem="Gve-Zc-ZTM" firstAttribute="leading" secondItem="0Ju-yl-gOo" secondAttribute="leading" id="hxl-io-tWJ"/>
+                                        <constraint firstItem="0VB-uI-bj6" firstAttribute="leading" secondItem="pdK-lY-8tb" secondAttribute="leadingMargin" id="jS7-xv-gsD"/>
+                                        <constraint firstItem="0Ju-yl-gOo" firstAttribute="top" secondItem="0VB-uI-bj6" secondAttribute="bottom" constant="33" id="kf8-5F-O4u"/>
+                                        <constraint firstItem="wXK-kP-awj" firstAttribute="centerX" secondItem="Sut-y4-NaO" secondAttribute="centerX" id="n7t-we-9iy"/>
+                                        <constraint firstItem="tmd-mj-dxE" firstAttribute="leading" secondItem="uyB-nm-OSn" secondAttribute="leading" id="oiA-ke-6co"/>
+                                        <constraint firstItem="wXK-kP-awj" firstAttribute="centerX" secondItem="Gve-Zc-ZTM" secondAttribute="centerX" id="u2l-Ay-G1c"/>
+                                        <constraint firstItem="wXK-kP-awj" firstAttribute="leading" secondItem="TBK-7a-xfL" secondAttribute="leading" id="vT5-Gb-U4h"/>
+                                        <constraint firstItem="TBK-7a-xfL" firstAttribute="top" secondItem="wXK-kP-awj" secondAttribute="bottom" constant="26" id="wkl-YG-hXa"/>
+                                        <constraint firstItem="Sut-y4-NaO" firstAttribute="top" secondItem="tmd-mj-dxE" secondAttribute="bottom" constant="38" id="xTg-ch-sJh"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -240,42 +269,64 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="452"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wine Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpy-qF-xnH">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wine Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpy-qF-xnH">
                                             <rect key="frame" x="20" y="11" width="383" height="37"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="37" id="Ucl-Be-Vnf"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6s-Sa-EaQ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6s-Sa-EaQ">
                                             <rect key="frame" x="20" y="81" width="374" height="140"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="140" id="jhp-sh-s1o"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="20"/>
                                             <color key="textColor" red="0.59168555700000003" green="0.0" blue="0.0071517457219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WineType" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3l-zI-aFL">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WineType" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3l-zI-aFL">
                                             <rect key="frame" x="20" y="40" width="374" height="33"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFr-zr-N26">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFr-zr-N26">
                                             <rect key="frame" x="20" y="229" width="374" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="18"/>
                                             <color key="textColor" red="0.078828209699999999" green="0.59845426629999998" blue="0.042393993239999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1c9-xW-Jf1">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1c9-xW-Jf1">
                                             <rect key="frame" x="20" y="263" width="374" height="48"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="48" id="cdP-qF-YJb"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="20"/>
                                             <color key="textColor" red="0.20093488640000001" green="0.38961860640000001" blue="0.20646797389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="aFr-zr-N26" firstAttribute="top" secondItem="n6s-Sa-EaQ" secondAttribute="bottom" constant="8" id="09X-xI-i69"/>
+                                        <constraint firstItem="n6s-Sa-EaQ" firstAttribute="trailing" secondItem="aFr-zr-N26" secondAttribute="trailing" id="0uG-jC-QaW"/>
+                                        <constraint firstItem="L3l-zI-aFL" firstAttribute="top" secondItem="phb-LK-Jt1" secondAttribute="topMargin" constant="29" id="2h0-Tv-B9d"/>
+                                        <constraint firstItem="1c9-xW-Jf1" firstAttribute="top" secondItem="aFr-zr-N26" secondAttribute="bottom" constant="8" id="2hM-1q-IKL"/>
+                                        <constraint firstItem="L3l-zI-aFL" firstAttribute="trailing" secondItem="phb-LK-Jt1" secondAttribute="trailingMargin" id="7yh-sB-6gB"/>
+                                        <constraint firstItem="n6s-Sa-EaQ" firstAttribute="top" secondItem="qpy-qF-xnH" secondAttribute="bottom" constant="33" id="ARQ-Uv-dhj"/>
+                                        <constraint firstItem="aFr-zr-N26" firstAttribute="trailing" secondItem="1c9-xW-Jf1" secondAttribute="trailing" id="CdH-Rq-QGF"/>
+                                        <constraint firstItem="qpy-qF-xnH" firstAttribute="leading" secondItem="n6s-Sa-EaQ" secondAttribute="leading" id="EmX-ZU-TTD"/>
+                                        <constraint firstItem="qpy-qF-xnH" firstAttribute="top" secondItem="phb-LK-Jt1" secondAttribute="topMargin" id="Ki3-YM-rbz"/>
+                                        <constraint firstItem="qpy-qF-xnH" firstAttribute="leading" secondItem="aFr-zr-N26" secondAttribute="leading" id="Vef-nP-ALQ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="qpy-qF-xnH" secondAttribute="trailing" constant="-9" id="b8y-5M-nyS"/>
+                                        <constraint firstItem="qpy-qF-xnH" firstAttribute="leading" secondItem="phb-LK-Jt1" secondAttribute="leadingMargin" id="g9c-Xy-Whz"/>
+                                        <constraint firstItem="qpy-qF-xnH" firstAttribute="leading" secondItem="1c9-xW-Jf1" secondAttribute="leading" id="go9-Fm-hsr"/>
+                                        <constraint firstItem="n6s-Sa-EaQ" firstAttribute="top" secondItem="L3l-zI-aFL" secondAttribute="bottom" constant="8" id="qbO-oE-RYy"/>
+                                        <constraint firstItem="qpy-qF-xnH" firstAttribute="leading" secondItem="L3l-zI-aFL" secondAttribute="leading" id="sHM-Tz-huK"/>
+                                        <constraint firstItem="L3l-zI-aFL" firstAttribute="trailing" secondItem="n6s-Sa-EaQ" secondAttribute="trailing" id="svA-b0-QQg"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="Price" destination="aFr-zr-N26" id="Dqj-3z-CTE"/>
@@ -315,24 +366,31 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="574"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wine Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thM-mj-ogP">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wine Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thM-mj-ogP">
                                             <rect key="frame" x="20" y="11" width="383" height="37"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="37" id="Xjf-gw-rnH"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvr-zD-u1X">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvr-zD-u1X">
                                             <rect key="frame" x="20" y="263" width="374" height="48"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="48" id="Wse-cs-LSr"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="20"/>
                                             <color key="textColor" red="0.20093488640000001" green="0.38961860640000001" blue="0.20646797389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAI-aw-i8r">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAI-aw-i8r">
                                             <rect key="frame" x="115" y="384" width="164" height="64"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="64" id="3w6-rq-vRr"/>
+                                                <constraint firstAttribute="width" constant="164" id="ZEo-cT-Sc1"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="17"/>
                                             <state key="normal" title="Find another">
                                                 <color key="titleColor" red="0.59168555700000003" green="0.0" blue="0.0071517457219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -341,16 +399,14 @@
                                                 <action selector="findAnotherTapped:" destination="xxm-uf-hPp" eventType="touchUpInside" id="M47-Kc-8I7"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WineType" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEc-ZY-Rh6">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WineType" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEc-ZY-Rh6">
                                             <rect key="frame" x="20" y="40" width="374" height="33"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EK8-kT-yeQ">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EK8-kT-yeQ">
                                             <rect key="frame" x="115" y="479" width="164" height="64"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="17"/>
                                             <state key="normal" title="Return Home">
@@ -360,23 +416,30 @@
                                                 <action selector="ReturnHomeTapped:" destination="xxm-uf-hPp" eventType="touchUpInside" id="CLJ-mY-Voy"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIo-zs-2yb">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIo-zs-2yb">
                                             <rect key="frame" x="20" y="229" width="269" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="269" id="AiR-2r-XnH"/>
+                                                <constraint firstAttribute="height" constant="26" id="yCe-c7-TW8"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="18"/>
                                             <color key="textColor" red="0.078828209699999999" green="0.59845426629999998" blue="0.042393993239999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cosine Similarity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRd-aJ-eSx">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cosine Similarity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRd-aJ-eSx">
                                             <rect key="frame" x="20" y="319" width="279" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="t3z-0u-8tH"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="18"/>
                                             <color key="textColor" systemColor="systemBlueColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTd-e8-0QA">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTd-e8-0QA">
                                             <rect key="frame" x="226" y="305" width="79" height="55"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="79" id="Y6d-6V-cPD"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                             <state key="normal" title="􀯩 ">
                                                 <color key="titleColor" systemColor="systemTealColor"/>
@@ -385,14 +448,44 @@
                                                 <action selector="QuestionMarkTapped:" destination="xxm-uf-hPp" eventType="touchUpInside" id="5cj-lr-6E8"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTd-bp-8zb">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTd-bp-8zb">
                                             <rect key="frame" x="20" y="81" width="374" height="140"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="20"/>
                                             <color key="textColor" red="0.59168555700000003" green="0.0" blue="0.0071517457219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="OAI-aw-i8r" firstAttribute="top" secondItem="VTd-e8-0QA" secondAttribute="bottom" constant="24" id="06E-be-9oJ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="EK8-kT-yeQ" secondAttribute="bottom" constant="20" id="0MZ-rq-MgX"/>
+                                        <constraint firstItem="thM-mj-ogP" firstAttribute="leading" secondItem="Ow6-TH-cb1" secondAttribute="leadingMargin" id="0VE-8g-Gpv"/>
+                                        <constraint firstItem="bEc-ZY-Rh6" firstAttribute="trailing" secondItem="BTd-bp-8zb" secondAttribute="trailing" id="7Jz-UI-mkh"/>
+                                        <constraint firstItem="nRd-aJ-eSx" firstAttribute="top" secondItem="cvr-zD-u1X" secondAttribute="bottom" constant="8" id="9pP-Eg-L4g"/>
+                                        <constraint firstItem="bEc-ZY-Rh6" firstAttribute="trailing" secondItem="Ow6-TH-cb1" secondAttribute="trailingMargin" id="AH9-KT-ODg"/>
+                                        <constraint firstItem="BTd-bp-8zb" firstAttribute="top" secondItem="bEc-ZY-Rh6" secondAttribute="bottom" constant="8" id="FSA-ug-rWL"/>
+                                        <constraint firstItem="thM-mj-ogP" firstAttribute="leading" secondItem="BTd-bp-8zb" secondAttribute="leading" id="Heq-yc-OfY"/>
+                                        <constraint firstItem="VTd-e8-0QA" firstAttribute="leading" secondItem="Ow6-TH-cb1" secondAttribute="leadingMargin" constant="206" id="J5Q-Vg-LGu"/>
+                                        <constraint firstItem="OAI-aw-i8r" firstAttribute="leading" secondItem="Ow6-TH-cb1" secondAttribute="leadingMargin" constant="95" id="K7k-0O-q4C"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="thM-mj-ogP" secondAttribute="trailing" constant="-9" id="Mwc-of-bFH"/>
+                                        <constraint firstItem="bIo-zs-2yb" firstAttribute="top" secondItem="BTd-bp-8zb" secondAttribute="bottom" constant="8" id="NHl-84-BAP"/>
+                                        <constraint firstItem="BTd-bp-8zb" firstAttribute="trailing" secondItem="cvr-zD-u1X" secondAttribute="trailing" id="NI2-hd-iLN"/>
+                                        <constraint firstItem="BTd-bp-8zb" firstAttribute="top" secondItem="thM-mj-ogP" secondAttribute="bottom" constant="33" id="PL3-8E-T4f"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="VTd-e8-0QA" secondAttribute="trailing" constant="89" id="RuA-Tn-TuP"/>
+                                        <constraint firstItem="thM-mj-ogP" firstAttribute="leading" secondItem="bEc-ZY-Rh6" secondAttribute="leading" id="Twh-mw-dQr"/>
+                                        <constraint firstItem="cvr-zD-u1X" firstAttribute="top" secondItem="bIo-zs-2yb" secondAttribute="bottom" constant="8" id="Ub7-Vx-ntg"/>
+                                        <constraint firstItem="bEc-ZY-Rh6" firstAttribute="top" secondItem="Ow6-TH-cb1" secondAttribute="topMargin" constant="29" id="V1F-WZ-tiT"/>
+                                        <constraint firstItem="cvr-zD-u1X" firstAttribute="centerY" secondItem="Ow6-TH-cb1" secondAttribute="centerY" id="WKh-a2-EUe"/>
+                                        <constraint firstItem="VTd-e8-0QA" firstAttribute="top" secondItem="bIo-zs-2yb" secondAttribute="bottom" constant="50" id="bLs-IJ-UcM"/>
+                                        <constraint firstItem="thM-mj-ogP" firstAttribute="leading" secondItem="cvr-zD-u1X" secondAttribute="leading" id="fQJ-K2-Zjm"/>
+                                        <constraint firstItem="OAI-aw-i8r" firstAttribute="top" secondItem="nRd-aJ-eSx" secondAttribute="bottom" constant="33" id="gCz-E2-qXB"/>
+                                        <constraint firstItem="OAI-aw-i8r" firstAttribute="trailing" secondItem="EK8-kT-yeQ" secondAttribute="trailing" id="htT-iW-5nh"/>
+                                        <constraint firstItem="thM-mj-ogP" firstAttribute="top" secondItem="Ow6-TH-cb1" secondAttribute="topMargin" id="iKx-wD-umW"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="nRd-aJ-eSx" secondAttribute="trailing" constant="95" id="jeS-xa-h51"/>
+                                        <constraint firstItem="EK8-kT-yeQ" firstAttribute="top" secondItem="OAI-aw-i8r" secondAttribute="bottom" constant="31" id="orm-v4-RKi"/>
+                                        <constraint firstItem="thM-mj-ogP" firstAttribute="leading" secondItem="nRd-aJ-eSx" secondAttribute="leading" id="r9F-oM-etd"/>
+                                        <constraint firstItem="OAI-aw-i8r" firstAttribute="leading" secondItem="EK8-kT-yeQ" secondAttribute="leading" id="uwo-eC-rS4"/>
+                                        <constraint firstItem="thM-mj-ogP" firstAttribute="leading" secondItem="bIo-zs-2yb" secondAttribute="leading" id="xdV-Lr-Tfd"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="CosineSimilarity" destination="nRd-aJ-eSx" id="i5u-t7-R9C"/>
@@ -416,47 +509,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WQd-or-bBI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3489.8550724637685" y="-74.330357142857139"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="T0r-dY-bDB">
-            <objects>
-                <viewController storyboardIdentifier="questionPage" id="W1i-1s-ZIL" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="T0W-fF-cZL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdt-Td-gXq">
-                                <rect key="frame" x="20" y="249" width="374" height="655"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">Cosine similarity is a metric used to compare text similarity. The value ranges from 0 to 1.0, with a value closer to 1 representing "more similar". How this happens: the app uses Apple's "natural language" machine learning framework to produce vectors (lists of numbers) for each wine description. In short, these numbers represent words in the English language, and they are computed by mapping tokens to integer values, word embeddings are learned by ML algorithms in an unsupervised manner. Then, these are used in relation to each other semantically, in a "sentence embedding". The hope is that the sentence will do a better job with the context of the word, and the words will be mapped to other "similar words" in the dictionary of words. Ex: berry and blackberry are somewhat similar, whereas oak and blackberry are not. The reason it is called "cosine" similarity? Well, the vectors are mapped into a plane by the computer. The vectors with a smaller cosine of the angle will be closer in the space. The closer in the space they are, the more similar all of the numbers in the vector are. </string>
-                                <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is cosine similarity?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mV6-SN-KFh">
-                                <rect key="frame" x="20" y="80" width="374" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="25"/>
-                                <color key="textColor" red="0.95947666060000003" green="0.94765137830000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0K-5t-PfO">
-                                <rect key="frame" x="20" y="33" width="374" height="341"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">Essentially, the closer the number is to 1, the more "similar" the computer rated the wine description to the one you hit "find similar" on. Of course, you can always read the description and make the judgement for yourself, or you could watch the computer try.</string>
-                                <fontDescription key="fontDescription" name="KohinoorTelugu-Medium" family="Kohinoor Telugu" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="gp0-eL-pzc"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IKY-SW-cxr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4291.304347826087" y="-73.660714285714278"/>
         </scene>
         <!--Navigation View Controller-->
         <scene sceneID="9tO-Tc-cUs">
