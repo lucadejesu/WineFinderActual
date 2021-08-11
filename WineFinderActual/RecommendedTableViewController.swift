@@ -247,7 +247,7 @@ class RecommendedTableViewController: UITableViewController
     
     @IBAction func QuestionMarkTapped(_ sender: UIButton)
     {
-        let question_alert = UIAlertController(title: "Cosine Similarity?", message: "Cosine similarity is a metric used to compare text similarity. The value ranges from 0 to 1.0, with a value closer to 1 representing \'more similar.\' ", preferredStyle: .alert)
+        let question_alert = UIAlertController(title: "Cosine Similarity?", message: "Cosine similarity is a metric used to compare text similarity. The value ranges from 0 to 1.0, with a value closer to 1 representing \'more similar.\' In this case, most wines are above 0.8, so the most similar will be above 0.9. ", preferredStyle: .alert)
         
         question_alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
 
