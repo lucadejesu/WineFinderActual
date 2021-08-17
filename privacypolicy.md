@@ -3,26 +3,25 @@ At Wine Spotter, accessible from https://lucadejesu.github.io/WineFinderActual/p
 
 If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
 
-This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in Wine Spotter. This policy is not applicable to any information collected offline or via channels other than this website. Our Privacy Policy was created with the help of the TermsFeed Privacy Policy Generator.
+This Privacy Policy applies only to our online activities and is valid for visitors to our app with regards to the information that they shared and/or collect in Wine Spotter. This policy is not applicable to any information collected offline or via channels other than this website. Our Privacy Policy was created with the help of the TermsFeed Privacy Policy Generator.
 
 Consent
-By using our website, you hereby consent to our Privacy Policy and agree to its terms.
+By using our app, you hereby consent to our Privacy Policy and agree to its terms.
 
 Information we collect
 The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information.
 
 If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message and/or attachments you may send us, and any other information you may choose to provide.
 
-When you register for an Account, we may ask for your contact information, including items such as name, company name, address, email address, and telephone number.
-
 How we use your information
+Wine Spotter currently does not collect any user information, as of version 1.0.0. However in future versions, the following can describe how user info might be used.
 We use the information we collect in various ways, including to:
 
-Provide, operate, and maintain our website
-Improve, personalize, and expand our website
-Understand and analyze how you use our website
+Provide, operate, and maintain our app
+Improve, personalize, and expand our app
+Understand and analyze how you use our app
 Develop new products, services, features, and functionality
-Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes
+Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the app, and for marketing and promotional purposes
 Send you emails
 Find and prevent fraud
 Log Files
@@ -38,6 +37,7 @@ Note that Wine Spotter has no access to or control over these cookies that are u
 Third Party Privacy Policies
 Wine Spotter's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.
 
+This app does not connect to the internet nor does it require browser access, as of version 1.0.0.
 You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers' respective websites.
 
 CCPA Privacy Rights (Do Not Sell My Personal Information)
@@ -71,5 +71,5 @@ If you make a request, we have one month to respond to you. If you would like to
 Children's Information
 Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.
 
-Wine Spotter does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
+Wine Spotter does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our app, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
 
