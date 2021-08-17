@@ -1,5 +1,5 @@
 Privacy Policy for Wine Spotter
-At Wine Spotter, accessible from https://lucadejesu.github.io/WineFinderActual/, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Wine Spotter and how we use it.
+At Wine Spotter, accessible from https://lucadejesu.github.io/WineFinderActual/privacypolicy.md, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Wine Spotter and how we use it.
 
 If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
 
