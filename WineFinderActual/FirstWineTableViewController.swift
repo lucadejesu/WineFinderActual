@@ -423,7 +423,7 @@ class FirstWineTableViewController: UITableViewController
         
         
         
-        let description_alert = UIAlertController(title: foundWines[indexPath.row].title, message: trimmed , preferredStyle: .actionSheet)
+        let description_alert = UIAlertController(title: foundWines[indexPath.row].title, message: trimmed , preferredStyle: .alert)
         
         
         
